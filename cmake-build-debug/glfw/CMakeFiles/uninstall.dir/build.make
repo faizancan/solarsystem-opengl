@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl
+CMAKE_SOURCE_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-buil
 include glfw/CMakeFiles/uninstall.dir/progress.make
 
 glfw/CMakeFiles/uninstall:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw && /Applications/CLion.app/Contents/bin/cmake/bin/cmake -P /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/cmake_uninstall.cmake
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw && /Applications/CLion.app/Contents/bin/cmake/bin/cmake -P /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/cmake_uninstall.cmake
 
 uninstall: glfw/CMakeFiles/uninstall
 uninstall: glfw/CMakeFiles/uninstall.dir/build.make
@@ -67,10 +67,10 @@ glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : glfw/CMakeFiles/uninstall.dir/build
 
 glfw/CMakeFiles/uninstall.dir/clean:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : glfw/CMakeFiles/uninstall.dir/clean
 
 glfw/CMakeFiles/uninstall.dir/depend:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/CMakeFiles/uninstall.dir/depend
 

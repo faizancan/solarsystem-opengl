@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/title.dir/__/deps/glad.c.o"
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/title.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/title.dir/title.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/title.dir/__/deps/glad.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/title.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/title.dir/title.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -18,7 +18,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

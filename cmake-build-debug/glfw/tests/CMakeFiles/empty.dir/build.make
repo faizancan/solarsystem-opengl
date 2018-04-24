@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl
+CMAKE_SOURCE_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include glfw/tests/CMakeFiles/empty.dir/depend.make
@@ -59,16 +59,16 @@ include glfw/tests/CMakeFiles/empty.dir/flags.make
 
 glfw/tests/CMakeFiles/empty.dir/empty.c.o: glfw/tests/CMakeFiles/empty.dir/flags.make
 glfw/tests/CMakeFiles/empty.dir/empty.c.o: ../glfw/tests/empty.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/tests/CMakeFiles/empty.dir/empty.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/empty.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/empty.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/tests/CMakeFiles/empty.dir/empty.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/empty.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/empty.c
 
 glfw/tests/CMakeFiles/empty.dir/empty.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/empty.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/empty.c > CMakeFiles/empty.dir/empty.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/empty.c > CMakeFiles/empty.dir/empty.c.i
 
 glfw/tests/CMakeFiles/empty.dir/empty.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/empty.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/empty.c -o CMakeFiles/empty.dir/empty.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/empty.c -o CMakeFiles/empty.dir/empty.c.s
 
 glfw/tests/CMakeFiles/empty.dir/empty.c.o.requires:
 
@@ -83,16 +83,16 @@ glfw/tests/CMakeFiles/empty.dir/empty.c.o.provides.build: glfw/tests/CMakeFiles/
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o: glfw/tests/CMakeFiles/empty.dir/flags.make
 glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o: ../glfw/deps/tinycthread.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/tinycthread.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/tinycthread.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/tinycthread.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/tinycthread.c
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/__/deps/tinycthread.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/tinycthread.c > CMakeFiles/empty.dir/__/deps/tinycthread.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/tinycthread.c > CMakeFiles/empty.dir/__/deps/tinycthread.c.i
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/__/deps/tinycthread.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/tinycthread.c -o CMakeFiles/empty.dir/__/deps/tinycthread.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/tinycthread.c -o CMakeFiles/empty.dir/__/deps/tinycthread.c.s
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o.requires:
 
@@ -107,16 +107,16 @@ glfw/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o.provides.build: glfw/tes
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.o: glfw/tests/CMakeFiles/empty.dir/flags.make
 glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.o: ../glfw/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/glad.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/glad.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/__/deps/glad.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/empty.dir/__/deps/glad.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/empty.dir/__/deps/glad.c.i
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/__/deps/glad.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/empty.dir/__/deps/glad.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/empty.dir/__/deps/glad.c.s
 
 glfw/tests/CMakeFiles/empty.dir/__/deps/glad.c.o.requires:
 
@@ -144,8 +144,8 @@ glfw/tests/empty.app/Contents/MacOS/empty: glfw/tests/CMakeFiles/empty.dir/__/de
 glfw/tests/empty.app/Contents/MacOS/empty: glfw/tests/CMakeFiles/empty.dir/build.make
 glfw/tests/empty.app/Contents/MacOS/empty: glfw/src/libglfw3.a
 glfw/tests/empty.app/Contents/MacOS/empty: glfw/tests/CMakeFiles/empty.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable empty.app/Contents/MacOS/empty"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/empty.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable empty.app/Contents/MacOS/empty"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/empty.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 glfw/tests/CMakeFiles/empty.dir/build: glfw/tests/empty.app/Contents/MacOS/empty
@@ -159,10 +159,10 @@ glfw/tests/CMakeFiles/empty.dir/requires: glfw/tests/CMakeFiles/empty.dir/__/dep
 .PHONY : glfw/tests/CMakeFiles/empty.dir/requires
 
 glfw/tests/CMakeFiles/empty.dir/clean:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -P CMakeFiles/empty.dir/cmake_clean.cmake
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -P CMakeFiles/empty.dir/cmake_clean.cmake
 .PHONY : glfw/tests/CMakeFiles/empty.dir/clean
 
 glfw/tests/CMakeFiles/empty.dir/depend:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/empty.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/empty.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/tests/CMakeFiles/empty.dir/depend
 

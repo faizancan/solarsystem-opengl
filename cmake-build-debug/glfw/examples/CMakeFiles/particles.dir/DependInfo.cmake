@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/getopt.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o"
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/glad.c.o"
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/tinycthread.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o"
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples/particles.c" "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/particles.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/getopt.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/glad.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/tinycthread.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples/particles.c" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/particles.dir/particles.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -20,7 +20,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

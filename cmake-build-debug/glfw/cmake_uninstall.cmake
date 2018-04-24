@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt\"")
+if (NOT EXISTS "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt" files)
+file(READ "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

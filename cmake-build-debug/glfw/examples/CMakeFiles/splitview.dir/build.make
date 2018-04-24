@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl
+CMAKE_SOURCE_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include glfw/examples/CMakeFiles/splitview.dir/depend.make
@@ -59,20 +59,20 @@ include glfw/examples/CMakeFiles/splitview.dir/flags.make
 
 glfw/examples/splitview.app/Contents/Resources/glfw.icns: ../glfw/examples/glfw.icns
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Copying OS X content glfw/examples/splitview.app/Contents/Resources/glfw.icns"
-	$(CMAKE_COMMAND) -E copy /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples/glfw.icns glfw/examples/splitview.app/Contents/Resources/glfw.icns
+	$(CMAKE_COMMAND) -E copy /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples/glfw.icns glfw/examples/splitview.app/Contents/Resources/glfw.icns
 
 glfw/examples/CMakeFiles/splitview.dir/splitview.c.o: glfw/examples/CMakeFiles/splitview.dir/flags.make
 glfw/examples/CMakeFiles/splitview.dir/splitview.c.o: ../glfw/examples/splitview.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/examples/CMakeFiles/splitview.dir/splitview.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/splitview.dir/splitview.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples/splitview.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/examples/CMakeFiles/splitview.dir/splitview.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/splitview.dir/splitview.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples/splitview.c
 
 glfw/examples/CMakeFiles/splitview.dir/splitview.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/splitview.dir/splitview.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples/splitview.c > CMakeFiles/splitview.dir/splitview.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples/splitview.c > CMakeFiles/splitview.dir/splitview.c.i
 
 glfw/examples/CMakeFiles/splitview.dir/splitview.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/splitview.dir/splitview.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples/splitview.c -o CMakeFiles/splitview.dir/splitview.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples/splitview.c -o CMakeFiles/splitview.dir/splitview.c.s
 
 glfw/examples/CMakeFiles/splitview.dir/splitview.c.o.requires:
 
@@ -87,16 +87,16 @@ glfw/examples/CMakeFiles/splitview.dir/splitview.c.o.provides.build: glfw/exampl
 
 glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.o: glfw/examples/CMakeFiles/splitview.dir/flags.make
 glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.o: ../glfw/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/splitview.dir/__/deps/glad.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/splitview.dir/__/deps/glad.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c
 
 glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/splitview.dir/__/deps/glad.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/splitview.dir/__/deps/glad.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/splitview.dir/__/deps/glad.c.i
 
 glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/splitview.dir/__/deps/glad.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/splitview.dir/__/deps/glad.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/splitview.dir/__/deps/glad.c.s
 
 glfw/examples/CMakeFiles/splitview.dir/__/deps/glad.c.o.requires:
 
@@ -122,8 +122,8 @@ glfw/examples/splitview.app/Contents/MacOS/splitview: glfw/examples/CMakeFiles/s
 glfw/examples/splitview.app/Contents/MacOS/splitview: glfw/examples/CMakeFiles/splitview.dir/build.make
 glfw/examples/splitview.app/Contents/MacOS/splitview: glfw/src/libglfw3.a
 glfw/examples/splitview.app/Contents/MacOS/splitview: glfw/examples/CMakeFiles/splitview.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable splitview.app/Contents/MacOS/splitview"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/splitview.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable splitview.app/Contents/MacOS/splitview"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/splitview.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 glfw/examples/CMakeFiles/splitview.dir/build: glfw/examples/splitview.app/Contents/MacOS/splitview
@@ -137,10 +137,10 @@ glfw/examples/CMakeFiles/splitview.dir/requires: glfw/examples/CMakeFiles/splitv
 .PHONY : glfw/examples/CMakeFiles/splitview.dir/requires
 
 glfw/examples/CMakeFiles/splitview.dir/clean:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples && $(CMAKE_COMMAND) -P CMakeFiles/splitview.dir/cmake_clean.cmake
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples && $(CMAKE_COMMAND) -P CMakeFiles/splitview.dir/cmake_clean.cmake
 .PHONY : glfw/examples/CMakeFiles/splitview.dir/clean
 
 glfw/examples/CMakeFiles/splitview.dir/depend:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/examples /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/splitview.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/examples /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/examples/CMakeFiles/splitview.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/examples/CMakeFiles/splitview.dir/depend
 

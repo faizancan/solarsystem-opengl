@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl
+CMAKE_SOURCE_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include glfw/tests/CMakeFiles/timeout.dir/depend.make
@@ -59,16 +59,16 @@ include glfw/tests/CMakeFiles/timeout.dir/flags.make
 
 glfw/tests/CMakeFiles/timeout.dir/timeout.c.o: glfw/tests/CMakeFiles/timeout.dir/flags.make
 glfw/tests/CMakeFiles/timeout.dir/timeout.c.o: ../glfw/tests/timeout.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/tests/CMakeFiles/timeout.dir/timeout.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/timeout.dir/timeout.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/timeout.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object glfw/tests/CMakeFiles/timeout.dir/timeout.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/timeout.dir/timeout.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/timeout.c
 
 glfw/tests/CMakeFiles/timeout.dir/timeout.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/timeout.dir/timeout.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/timeout.c > CMakeFiles/timeout.dir/timeout.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/timeout.c > CMakeFiles/timeout.dir/timeout.c.i
 
 glfw/tests/CMakeFiles/timeout.dir/timeout.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/timeout.dir/timeout.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests/timeout.c -o CMakeFiles/timeout.dir/timeout.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests/timeout.c -o CMakeFiles/timeout.dir/timeout.c.s
 
 glfw/tests/CMakeFiles/timeout.dir/timeout.c.o.requires:
 
@@ -83,16 +83,16 @@ glfw/tests/CMakeFiles/timeout.dir/timeout.c.o.provides.build: glfw/tests/CMakeFi
 
 glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.o: glfw/tests/CMakeFiles/timeout.dir/flags.make
 glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.o: ../glfw/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.o"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/timeout.dir/__/deps/glad.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.o"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/timeout.dir/__/deps/glad.c.o   -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c
 
 glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/timeout.dir/__/deps/glad.c.i"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/timeout.dir/__/deps/glad.c.i
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c > CMakeFiles/timeout.dir/__/deps/glad.c.i
 
 glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/timeout.dir/__/deps/glad.c.s"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/timeout.dir/__/deps/glad.c.s
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/deps/glad.c -o CMakeFiles/timeout.dir/__/deps/glad.c.s
 
 glfw/tests/CMakeFiles/timeout.dir/__/deps/glad.c.o.requires:
 
@@ -118,8 +118,8 @@ glfw/tests/timeout.app/Contents/MacOS/timeout: glfw/tests/CMakeFiles/timeout.dir
 glfw/tests/timeout.app/Contents/MacOS/timeout: glfw/tests/CMakeFiles/timeout.dir/build.make
 glfw/tests/timeout.app/Contents/MacOS/timeout: glfw/src/libglfw3.a
 glfw/tests/timeout.app/Contents/MacOS/timeout: glfw/tests/CMakeFiles/timeout.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable timeout.app/Contents/MacOS/timeout"
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/timeout.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable timeout.app/Contents/MacOS/timeout"
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/timeout.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 glfw/tests/CMakeFiles/timeout.dir/build: glfw/tests/timeout.app/Contents/MacOS/timeout
@@ -132,10 +132,10 @@ glfw/tests/CMakeFiles/timeout.dir/requires: glfw/tests/CMakeFiles/timeout.dir/__
 .PHONY : glfw/tests/CMakeFiles/timeout.dir/requires
 
 glfw/tests/CMakeFiles/timeout.dir/clean:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -P CMakeFiles/timeout.dir/cmake_clean.cmake
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests && $(CMAKE_COMMAND) -P CMakeFiles/timeout.dir/cmake_clean.cmake
 .PHONY : glfw/tests/CMakeFiles/timeout.dir/clean
 
 glfw/tests/CMakeFiles/timeout.dir/depend:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/timeout.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/glfw/tests/CMakeFiles/timeout.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/tests/CMakeFiles/timeout.dir/depend
 

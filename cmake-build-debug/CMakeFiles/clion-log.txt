@@ -1,7 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl
--- Could NOT find Vulkan (missing: VULKAN_LIBRARY VULKAN_INCLUDE_DIR) 
--- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
--- Using Cocoa for window creation
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+-- Build files have been written to: /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug

@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl
+CMAKE_SOURCE_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SolarSystem.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/SolarSystem.dir/flags.make
 
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.o: CMakeFiles/SolarSystem.dir/flags.make
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.o: ../solarsystem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SolarSystem.dir/solarsystem.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SolarSystem.dir/solarsystem.cpp.o -c /Users/faizankhan/CLionProjects/solarsystem-opengl/solarsystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SolarSystem.dir/solarsystem.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SolarSystem.dir/solarsystem.cpp.o -c /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/solarsystem.cpp
 
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SolarSystem.dir/solarsystem.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/solarsystem.cpp > CMakeFiles/SolarSystem.dir/solarsystem.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/solarsystem.cpp > CMakeFiles/SolarSystem.dir/solarsystem.cpp.i
 
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SolarSystem.dir/solarsystem.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/solarsystem.cpp -o CMakeFiles/SolarSystem.dir/solarsystem.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/solarsystem.cpp -o CMakeFiles/SolarSystem.dir/solarsystem.cpp.s
 
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.o.requires:
 
@@ -81,44 +81,17 @@ CMakeFiles/SolarSystem.dir/solarsystem.cpp.o.provides: CMakeFiles/SolarSystem.di
 CMakeFiles/SolarSystem.dir/solarsystem.cpp.o.provides.build: CMakeFiles/SolarSystem.dir/solarsystem.cpp.o
 
 
-CMakeFiles/SolarSystem.dir/glad.c.o: CMakeFiles/SolarSystem.dir/flags.make
-CMakeFiles/SolarSystem.dir/glad.c.o: ../glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SolarSystem.dir/glad.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SolarSystem.dir/glad.c.o   -c /Users/faizankhan/CLionProjects/solarsystem-opengl/glad.c
-
-CMakeFiles/SolarSystem.dir/glad.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SolarSystem.dir/glad.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/faizankhan/CLionProjects/solarsystem-opengl/glad.c > CMakeFiles/SolarSystem.dir/glad.c.i
-
-CMakeFiles/SolarSystem.dir/glad.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SolarSystem.dir/glad.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/faizankhan/CLionProjects/solarsystem-opengl/glad.c -o CMakeFiles/SolarSystem.dir/glad.c.s
-
-CMakeFiles/SolarSystem.dir/glad.c.o.requires:
-
-.PHONY : CMakeFiles/SolarSystem.dir/glad.c.o.requires
-
-CMakeFiles/SolarSystem.dir/glad.c.o.provides: CMakeFiles/SolarSystem.dir/glad.c.o.requires
-	$(MAKE) -f CMakeFiles/SolarSystem.dir/build.make CMakeFiles/SolarSystem.dir/glad.c.o.provides.build
-.PHONY : CMakeFiles/SolarSystem.dir/glad.c.o.provides
-
-CMakeFiles/SolarSystem.dir/glad.c.o.provides.build: CMakeFiles/SolarSystem.dir/glad.c.o
-
-
 # Object files for target SolarSystem
 SolarSystem_OBJECTS = \
-"CMakeFiles/SolarSystem.dir/solarsystem.cpp.o" \
-"CMakeFiles/SolarSystem.dir/glad.c.o"
+"CMakeFiles/SolarSystem.dir/solarsystem.cpp.o"
 
 # External object files for target SolarSystem
 SolarSystem_EXTERNAL_OBJECTS =
 
 SolarSystem: CMakeFiles/SolarSystem.dir/solarsystem.cpp.o
-SolarSystem: CMakeFiles/SolarSystem.dir/glad.c.o
 SolarSystem: CMakeFiles/SolarSystem.dir/build.make
-SolarSystem: glfw/src/libglfw3.a
 SolarSystem: CMakeFiles/SolarSystem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SolarSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable SolarSystem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SolarSystem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -127,7 +100,6 @@ CMakeFiles/SolarSystem.dir/build: SolarSystem
 .PHONY : CMakeFiles/SolarSystem.dir/build
 
 CMakeFiles/SolarSystem.dir/requires: CMakeFiles/SolarSystem.dir/solarsystem.cpp.o.requires
-CMakeFiles/SolarSystem.dir/requires: CMakeFiles/SolarSystem.dir/glad.c.o.requires
 
 .PHONY : CMakeFiles/SolarSystem.dir/requires
 
@@ -136,6 +108,6 @@ CMakeFiles/SolarSystem.dir/clean:
 .PHONY : CMakeFiles/SolarSystem.dir/clean
 
 CMakeFiles/SolarSystem.dir/depend:
-	cd /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug /Users/faizankhan/CLionProjects/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SolarSystem.dir/depend
 

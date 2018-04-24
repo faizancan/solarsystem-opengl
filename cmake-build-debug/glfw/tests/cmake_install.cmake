@@ -1,4 +1,4 @@
-# Install script for directory: /Users/faizankhan/CLionProjects/solarsystem-opengl/glfw/tests
+# Install script for directory: /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/glfw/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
