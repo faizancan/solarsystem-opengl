@@ -1,19 +1,18 @@
 cmake_minimum_required( VERSION 2.6 )
-project( MandelbotRenderer )
+project( SolarSystem )
 
 set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/" )
 
+include_directories(
 
-find_package( GLEW REQUIRED )
-find_package( GLFW3 REQUIRED )
-find_package( OpenGL REQUIRED )
+        ${CMAKE_SOURCE_DIR}/glfw/include
 
-set( SRC mandelbrot.cpp )
-set( LIBRARIES
-    ${OPENGL_LIBRARY}
-    ${GLEW_LIBRARIES}
-    ${GLFW3_LIBRARY}
-)
+        ${CMAKE_SOURCE_DIR}/glad/include)
 
-add_executable( Mandelbrot ${SRC} )
-target_link_libraries( Mandelbrot ${LIBRARIES} )
+set( SRC solarsystem.cpp )
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/glfw)
+
+add_executable( SolarSystem ${SRC} glad.c)
+
+target_link_libraries( SolarSystem ${LIBRARIES} glfw)
