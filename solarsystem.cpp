@@ -51,7 +51,6 @@ void display() {
 void displaySun() {
     glPushMatrix();
 
-    glRotatef(SUN_TILT, 0.0f, 0.0f, 1.0f); // axis is tilted  6 degrees
     glRotatef(360.0f * earthDays / 24.0, 0.0f, 1.0f, 0.0f); //
 
 
@@ -70,32 +69,32 @@ void displaySun() {
 }
 
 void displayPlanets() {
-    displayEachPlanet(MERCURY_TILT,
+    displayEachPlanet(MERCURY_INCLINATION,
                       MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, 0.1);
-    displayEachPlanet(VENUS_TILT,
+    displayEachPlanet(VENUS_INCLINATION,
                       VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, 0.2);
-    displayEachPlanet(EARTH_TILT,
+    displayEachPlanet(EARTH_INCLINATION,
                       EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, 0.3);
-    displayEachPlanet(MARS_TILT,
+    displayEachPlanet(MARS_INCLINATION,
                       MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, 0.4);
-    displayEachPlanet(JUPITER_TILT,
+    displayEachPlanet(JUPITER_INCLINATION,
                       JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, 0.5);
-    displayEachPlanet(SATURN_TILT,
+    displayEachPlanet(SATURN_INCLINATION,
                       SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, 0.6);
-    displayEachPlanet(URANUS_TILT,
+    displayEachPlanet(URANUS_INCLINATION,
                       URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, 0.7);
-    displayEachPlanet(NEPTUNE_TILT,
+    displayEachPlanet(NEPTUNE_INCLINATION,
                       NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, 0.8);
-    displayEachPlanet(PLUTO_TILT,
+    displayEachPlanet(PLUTO_INCLINATION,
                       PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, 0.9);
 
 }
 
 // instead of bitmap field, we can use the color field
-void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color) {
+void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color) {
     glPushMatrix();
 
-    glRotatef(tilt, 0.0f, 0.0f, 1.0f);
+    glRotatef(inclination, 0.0f, 0.0f, 1.0f);
     glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
     glTranslatef(distanceFromSun, 0.0f, 0.0f);
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);

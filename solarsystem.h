@@ -3,17 +3,16 @@
 //
 #ifndef SOLARSYSTEM_H
 
-// tilt from y axis in degrees
-const GLfloat SUN_TILT = 7;
-const GLfloat MERCURY_TILT = 0;
-const GLfloat VENUS_TILT = 3;
-const GLfloat EARTH_TILT = 23;
-const GLfloat MARS_TILT = 25;
-const GLfloat JUPITER_TILT = 3;
-const GLfloat SATURN_TILT = 27;
-const GLfloat URANUS_TILT = 82;
-const GLfloat NEPTUNE_TILT = 28;
-const GLfloat PLUTO_TILT = 60;
+// orbital inclination from y axis in degrees
+const GLfloat MERCURY_INCLINATION = 7;
+const GLfloat VENUS_INCLINATION = 3.39;
+const GLfloat EARTH_INCLINATION = 0;
+const GLfloat MARS_INCLINATION = 1.85;
+const GLfloat JUPITER_INCLINATION = 1.3;
+const GLfloat SATURN_INCLINATION = 2.49;
+const GLfloat URANUS_INCLINATION = 0.77;
+const GLfloat NEPTUNE_INCLINATION = 1.77;
+const GLfloat PLUTO_INCLINATION = 17.2;
 
 // orbit radius, AU scaled by 4.0f
 const GLfloat MERCURY_DISTANCE = 0.1f;
