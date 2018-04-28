@@ -8,10 +8,18 @@
 GLfloat angle = 0.0f;  // rotational angle of the shapes
 GLint refreshMills = 30; // refresh GLinterval in milliseconds
 GLfloat earthDays = 0.0f;
+GLfloat earthYears = 0.0f;
 GLfloat earthDaysPerYear = 0.0f;
-GLfloat earthTimeInterval = 0.5f;
+GLfloat earthTimeInterval = 1.0f;
 GLfloat earthTimeIntervalTemp = earthTimeInterval;
+GLint earthDaysTotal = 0;
+GLint earthYearsTotal = 0;
+GLint earthYearsTotalTemp1 = 0;
+GLint earthYearsTotalTemp2 = 0;
+GLint earthYearsTotalTemp3 = 0;
+GLint earthYearsTotalTemp4 = 0;
 
+// Strings for key functions
 unsigned char string_legendTitle[] = "Key Functions:"; // length = 14
 unsigned char string_q[] = "q - Quit"; // length = 9
 unsigned char string_p[] = "p - Pause"; // length = 9
@@ -20,10 +28,23 @@ unsigned char string_r[] = "r - Reverse"; // length = 11
 unsigned char string_UP[] = "Up arrow - Speed Up"; // length = 19
 unsigned char string_DOWN[] = "Down arrow - Slow down"; // length = 22
 
+// Strings for counter display
+unsigned char string_years[] = "Earth Years Elapsed:"; // length = 21
+unsigned char string_days[] = "Day of Current Year:"; // length = 20
+unsigned char string_daysTotal[] = "Total Days Elapsed:"; // length = 19;
+char numYears[10];
+char numDays[365];
+unsigned char yrCount[] = "0";
+//unsigned char yrCountTens[] = "0";
+//unsigned char yrCountOnes[] = "0";
+//unsigned char yrCountOnes[] = "0";
+unsigned char dayCount[] = "0";
+
 void displaySun();
 void displayPlanets();
 void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color1, GLfloat color2, GLfloat color3);
 void displayKeyFunctions();
+void displayCounter();
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -33,13 +54,15 @@ void initGL() {
 
 /* Called back when timer expired */
 void Timer(GLint value) {
-
+    earthDaysTotal += 1*earthTimeInterval; //not correct bc update can happen not at 1 day rate - place holder
     earthDays += earthTimeInterval;
     earthDaysPerYear += earthTimeInterval;
-    if (earthDaysPerYear == 365)
-        earthDays = 0;
+    earthYearsTotal = earthDaysTotal / 365;
+    if (earthDays >= 365) //this was earthDaysPerYear but I changed it because then it only set earthDays back to zero once
+        earthDays -= 365;
     glutPostRedisplay();      // Post re-paGLint request to activate display()
     glutTimerFunc(refreshMills, Timer, 1); // next Timer call milliseconds later
+
 }
 
 /* Handler for window-repaGLint event. Call back when the window first appears and
@@ -53,11 +76,18 @@ void display() {
     displaySun();
     displayPlanets();
     displayKeyFunctions();
+    displayCounter();
 
     glutSwapBuffers();   // Double buffered - swap the front and back buffers
 
     // Change the rotational angle after each display()
     angle += 2.0f;
+
+    std::cout << "earth days: " << earthDays << std::endl;
+    std::cout << "earth days per year: " << earthDaysPerYear <<  std::endl;
+    std::cout <<  "earth days total: " << earthDaysTotal << std::endl;
+    std::cout <<  "earth years total: " << earthYearsTotal << std::endl;
+
 }
 
 void displaySun() {
@@ -196,8 +226,85 @@ void displayKeyFunctions(){
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_DOWN[i]);
     }
+    glPopMatrix();
 }
+void displayCounter(){
 
+    glPushMatrix();
+    glColor3f(1.0f,1.0f,1.0f);
+    sprintf(numYears, "%i", earthYearsTotal);
+
+    int yrLength = 0;
+    if(earthYearsTotal < 10) {
+        yrCount[0] = static_cast<unsigned char>(numYears[0]);
+        yrLength = 1;
+    }else if(earthYearsTotal<100){
+        yrCount[0] = static_cast<unsigned char>(numYears[0]);
+        yrCount[1] = static_cast<unsigned char>(numYears[1]);
+        yrLength = 2;
+    }else if(earthYearsTotal<1000){
+        yrCount[0] = static_cast<unsigned char>(numYears[0]);
+        yrCount[1] = static_cast<unsigned char>(numYears[1]);
+        yrCount[2] = static_cast<unsigned char>(numYears[2]);
+        yrLength = 3;
+    }else{
+        exit(0);
+    }
+
+
+
+    sprintf(numDays, "%i", earthDaysTotal);
+
+   // yrCount[0] = static_cast<unsigned char>(numYears[0]);
+    //dayCount[0] = static_cast<unsigned char>(numDays[0]);
+
+    std::cout << "earth years: " << earthYears << std::endl;
+    std::cout << "num years: " << numYears << std::endl;
+    std::cout << yrCount << std::endl;
+    //std::cout <<  "earth days: " << earthDays << std::endl;
+    //std::cout << dayCount << std::endl;
+
+    // Years
+    int key_years = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_years);
+    glRasterPos2d(-2.2, 0.9);
+    int len = 21;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_years[i]);
+    }
+
+    // Year Count
+    int key_yearNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, yrCount);
+    glRasterPos2d(-1.5, 0.9);
+    len = yrLength;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,yrCount[i]);
+    }
+
+    // Days
+    int key_days = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_days);
+    glRasterPos2d(-2.2, 0.8);
+    len = 20;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_days[i]);
+    }
+
+    // Day Count
+    //int key_dayqNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, dayCount);
+    //glRasterPos2d(-1.5, 0.8);
+    //len = 3;
+    //for(int i=0;i<len;i++){
+    //    glutBitmapCharacter(GLUT_BITMAP_8_BY_13,dayCount[i]);
+    //}
+
+    // Total Days
+    int key_daysTotal = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysTotal);
+    glRasterPos2d(-2.2, 0.7);
+    len = 19;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_daysTotal[i]);
+    }
+    glPopMatrix();
+}
 /* Handler for window re-size event. Called back when the window first appears and
    whenever the window is re-sized with its new width and height */
 void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative GLinteger
@@ -223,12 +330,14 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative GLint
 void specialKeys(GLint key, GLint x, GLint y) {
     switch (key) {
         case GLUT_KEY_UP:    // for pressing the up key, increases earth day speed by 2x
-            earthTimeInterval *= 2;
+            earthTimeInterval += 1.0;
             earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
             break;
         case GLUT_KEY_DOWN:    // for pressing the down key, decreases earth day speed 0.5x
-            earthTimeInterval *= 0.5;
+            if (earthTimeInterval > 1.0) {
+            earthTimeInterval -= 1.0;
             earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+            }
             break;
     }
 }
