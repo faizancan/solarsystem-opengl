@@ -99,15 +99,21 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     glTranslatef(distanceFromSun, 0.0f, 0.0f);
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
 
-    glBegin(GL_POLYGON);
-    glColor3f(color, 1.0f / color, 0.0f);
-    glVertex2f(-0.01f, -0.02f);
-    glVertex2f( 0.01f, -0.02f);
-    glVertex2f( 0.02f,  0.00f);
-    glVertex2f( 0.01f,  0.02f);
-    glVertex2f(-0.01f,  0.02f);
-    glVertex2f(-0.02f,  0.00f);
-    glEnd();
+//    glBegin(GL_POLYGON);
+//    glColor3f(color, 1.0f / color, 0.0f);
+//    glVertex2f(-0.01f, -0.02f);
+//    glVertex2f( 0.01f, -0.02f);
+//    glVertex2f( 0.02f,  0.00f);
+//    glVertex2f( 0.01f,  0.02f);
+//    glVertex2f(-0.01f,  0.02f);
+//    glVertex2f(-0.02f,  0.00f);
+//    glEnd();
+
+    glPushMatrix();
+    glTranslatef(0, 0.0, 0.0);
+    glutSolidSphere(0.1, 50, 50);
+
+    glPopMatrix();
 
     glPopMatrix();
 }
@@ -142,6 +148,19 @@ void specialKeys(GLint key, GLint x, GLint y) {
     }
 }
 
+void keyboard(unsigned char key, int x, int y)
+{
+    switch(key) {
+        case 'q':
+            exit(0);
+            break;
+
+        default:
+            break;
+    }
+    glutPostRedisplay();
+}
+
 /* Main function: GLUT runs as a console application starting at main() */
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
@@ -153,6 +172,7 @@ GLint main(GLint argc, char** argv) {
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
     glutTimerFunc(0, Timer, 0);     // First timer call immediately
     glutSpecialFunc(specialKeys); // Register callback handler for special-key event
+    glutKeyboardFunc(keyboard);
     initGL();                       // Our own OpenGL initialization
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
