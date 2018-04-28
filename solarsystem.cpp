@@ -59,11 +59,17 @@ void displaySun() {
     glBegin(GL_POLYGON);
     glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
     glVertex2f(-0.01f, -0.02f);
+    glVertex2f(0.0f, -0.04f); //point 1 (bottom)
     glVertex2f( 0.01f, -0.02f);
+    glVertex2f(0.035f, -0.015f); //point 2
     glVertex2f( 0.02f,  0.00f);
+    glVertex2f(0.035f, 0.015f); //point 3
     glVertex2f( 0.01f,  0.02f);
+    glVertex2f(0.0f, 0.04f); //point 4
     glVertex2f(-0.01f,  0.02f);
-    glVertex2f(-0.02f,  0.00f);
+    glVertex2f(-0.035f, 0.015f); //point 5
+    glVertex2f(-0.02f,  0.0f);
+    glVertex2f(-0.035f, -0.015f); //point 6
     glEnd();
 
     glPopMatrix();
@@ -170,6 +176,10 @@ void keyboard(unsigned char key, int x, int y)
             break;
         case 'g': // g = 'go' and continues planet movement
             earthTimeInterval = earthTimeIntervalTemp;
+            break;
+        case 'r': // r = 'reverse' and reverses direction
+            earthTimeInterval = -earthTimeInterval;
+            earthTimeIntervalTemp = earthTimeInterval;
             break;
         default:
             break;
