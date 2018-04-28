@@ -2,6 +2,7 @@
 #include <sys/stat.h>
 #include <GLUT/glut.h>  // GLUT, include glu.h and gl.h
 #include "solarsystem.h"
+#include <string>
 
 // global variable
 GLfloat angle = 0.0f;  // rotational angle of the shapes
@@ -11,9 +12,18 @@ GLfloat earthDaysPerYear = 0.0f;
 GLfloat earthTimeInterval = 0.5f;
 GLfloat earthTimeIntervalTemp = earthTimeInterval;
 
+unsigned char string_legendTitle[] = "Key Functions:"; // length = 14
+unsigned char string_q[] = "q - Quit"; // length = 9
+unsigned char string_p[] = "p - Pause"; // length = 9
+unsigned char string_c[] = "c - Continue"; // length = 12
+unsigned char string_r[] = "r - Reverse"; // length = 11
+unsigned char string_UP[] = "Up arrow - Speed Up"; // length = 19
+unsigned char string_DOWN[] = "Down arrow - Slow down"; // length = 22
+
 void displaySun();
 void displayPlanets();
 void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color1, GLfloat color2, GLfloat color3);
+void displayKeyFunctions();
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -42,6 +52,7 @@ void display() {
     // display functions go here
     displaySun();
     displayPlanets();
+    displayKeyFunctions();
 
     glutSwapBuffers();   // Double buffered - swap the front and back buffers
 
@@ -126,6 +137,66 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
     glPopMatrix();
 }
+void displayKeyFunctions(){
+    glPushMatrix();
+    glColor3f(1.0f,1.0f,1.0f);
+
+    // title
+    int key_title = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_legendTitle);
+    glRasterPos2d(-2.2,-0.85);
+    int len = 14;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_legendTitle[i]);
+    }
+
+    // quit
+    int key_q = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_q);
+    glRasterPos2d(-1.7,-0.85);
+    len = 9;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_q[i]);
+    }
+
+    // pause
+    int key_p = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_p);
+    glRasterPos2d(-1.35,-0.85);
+    len = 9;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_p[i]);
+    }
+
+    // continue
+    int key_c = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_c);
+    glRasterPos2d(-1.0,-0.85);
+    len = 12;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_c[i]);
+    }
+
+    // reverse
+    int key_r = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_r);
+    glRasterPos2d(-0.5,-0.85);
+    len = 11;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_r[i]);
+    }
+
+    // Speed up
+    int key_UP = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_UP);
+    glRasterPos2d(-1.7,-0.95);
+    len = 19;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_UP[i]);
+    }
+
+    // Slow down
+    int key_DOWN = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_DOWN);
+    glRasterPos2d(-0.95,-0.95);
+    len = 22;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_DOWN[i]);
+    }
+}
 
 /* Handler for window re-size event. Called back when the window first appears and
    whenever the window is re-sized with its new width and height */
@@ -168,13 +239,13 @@ void keyboard(unsigned char key, int x, int y)
         case 'q':
             exit(0);
             break;
-        case 's': // s = 'stop' and pauses planets
+        case 'p': // p = 'pause' and stops planet animation
             if(earthTimeInterval != 0.0f) { // if already paused, Temp var won't become 0
                 earthTimeIntervalTemp = earthTimeInterval;
                 earthTimeInterval = 0.0f;
             }
             break;
-        case 'g': // g = 'go' and continues planet movement
+        case 'c': // c = 'continue' and restarts planet animation
             earthTimeInterval = earthTimeIntervalTemp;
             break;
         case 'r': // r = 'reverse' and reverses direction
