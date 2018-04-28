@@ -22,8 +22,8 @@ unsigned char string_q[] = "q - Quit"; // length = 9
 unsigned char string_p[] = "p - Pause"; // length = 9
 unsigned char string_c[] = "c - Continue"; // length = 12
 unsigned char string_r[] = "r - Reverse"; // length = 11
-unsigned char string_UP[] = "Up arrow - Speed Up"; // length = 19
-unsigned char string_DOWN[] = "Down arrow - Slow down"; // length = 22
+unsigned char string_UP[] = "up arrow - Speed Up"; // length = 19
+unsigned char string_DOWN[] = "down arrow - Slow down"; // length = 22
 
 // Strings for counter display
 unsigned char string_years[] = "Earth Years Elapsed:"; // length = 21
@@ -31,10 +31,10 @@ unsigned char string_days[] = "Day of Current Year:"; // length = 20
 unsigned char string_daysTotal[] = "Earth Days Elapsed:"; // length = 19;
 char numYears[10];
 char numDays[10];
-char numSDays[10];
+//char numSDays[10];
 unsigned char yrCount[] = "0";
 unsigned char dayCount[] = "0";
-unsigned char sDayCount[] = "0";
+//unsigned char sDayCount[] = "0";
 
 void displaySun();
 void displayPlanets();
@@ -79,12 +79,6 @@ void display() {
 
     // Change the rotational angle after each display()
     angle += 2.0f;
-
-    std::cout << "earth days: " << earthDays << std::endl;
-    std::cout << "earth days per year: " << earthDaysPerYear <<  std::endl;
-    std::cout <<  "earth days total: " << earthDaysTotal << std::endl;
-    std::cout <<  "earth years total: " << earthYearsTotal << std::endl;
-    std::cout << "earth days of single year: " << earthDaysSingleYr << std::endl;
 
 }
 
@@ -224,6 +218,7 @@ void displayKeyFunctions(){
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_DOWN[i]);
     }
+
     glPopMatrix();
 }
 void displayCounter(){
@@ -233,7 +228,7 @@ void displayCounter(){
 
     sprintf(numYears, "%i", earthYearsTotal);
     sprintf(numDays, "%i", earthDaysTotal);
-    sprintf(numSDays, "%i", earthDaysSingleYr);
+    //sprintf(numSDays, "%i", earthDaysSingleYr);
 
     int yrLength = 0;
     if(earthYearsTotal < 10) {
