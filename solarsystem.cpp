@@ -42,6 +42,7 @@ void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPe
                             GLfloat radius, GLfloat color1, GLfloat color2, GLfloat color3);
 void displayKeyFunctions();
 void displayCounter();
+void displaySaturnRings();
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -88,8 +89,14 @@ void displaySun() {
 
     glRotatef(360.0f * earthDays / 24.0, 0.0f, 1.0f, 0.0f); //
 
+    glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
+    glPushMatrix();
+    glTranslatef(0, 0.0, 0.0);
+    glutSolidSphere(0.03, 50,50); //scale radii add offset so all visible
 
-    // this animation is filler
+    glPopMatrix();
+
+    /*// this animation is filler
     glBegin(GL_POLYGON);
     glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
     glVertex2f(-0.01f, -0.02f);
@@ -104,7 +111,7 @@ void displaySun() {
     glVertex2f(-0.035f, 0.015f); //point 5
     glVertex2f(-0.02f,  0.0f);
     glVertex2f(-0.035f, -0.015f); //point 6
-    glEnd();
+    glEnd();*/
 
     glPopMatrix();
 }
@@ -119,16 +126,16 @@ void displayPlanets() {
     displayEachPlanet(MARS_INCLINATION,
                       MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, MARS_RADIUS, 0.5, 0.0,0.0); //dark red
     displayEachPlanet(JUPITER_INCLINATION,
-                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, 1.0, 0.5, 0.0); // orange
+                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, 1.0, 0.35, 0.0); // orange
     displayEachPlanet(SATURN_INCLINATION,
-                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, 0.5, .25, 0.0); // dark orange
+                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, 0.75, .45, 0.0); // dark yellow
     displayEachPlanet(URANUS_INCLINATION,
                       URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, URANUS_RADIUS, 0.5, 0.0,0.5); // purple
     displayEachPlanet(NEPTUNE_INCLINATION,
                       NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, NEPTUNE_RADIUS, 0.0, 0.0,1.0); // blue
     displayEachPlanet(PLUTO_INCLINATION,
                       PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, PLUTO_RADIUS, 0.5, 0.5, 1.0); // light blue
-
+    displaySaturnRings();
 }
 
 // instead of bitmap field, we can use the color field
@@ -161,6 +168,30 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
     glPopMatrix();
 }
+
+void displaySaturnRings(){
+    glPushMatrix();
+
+    glRotatef(SATURN_INCLINATION, 0.0f, 0.0f, 1.0f);
+    glRotatef(360.0f * earthDaysPerYear / SATURN_ORBIT, 0.0f, 1.0f, 0.0f);
+    glTranslatef(SATURN_DISTANCE/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
+    //glRotatef(360.0f * earthDays / SATURN_ROTATION + 90, 1.0f, 1.0f, 0.0f);
+    glRotatef(360.0f/SATURN_ROTATION + 45, 0.5f, 0.0f, 0.0f);
+
+    glColor3f(1.0f, 0.0f, 0.0f); // red
+
+    glPushMatrix();
+    glTranslatef(0, 0.0, 0.0);
+    GLdouble sat_rad = SATURN_RADIUS/2000000 + 0.0175;
+    glutSolidTorus(sat_rad - 0.0375,sat_rad+0.015, 10, 10); //scale radii add offset so all visible
+
+    glPopMatrix();
+
+    glPopMatrix();
+
+}
+
+
 void displayKeyFunctions(){
     glPushMatrix();
     glColor3f(1.0f,1.0f,1.0f);
