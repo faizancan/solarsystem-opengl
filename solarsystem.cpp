@@ -9,6 +9,7 @@ GLint refreshMills = 30; // refresh GLinterval in milliseconds
 GLfloat earthDays = 0.0f;
 GLfloat earthDaysPerYear = 0.0f;
 GLfloat earthTimeInterval = 0.5f;
+GLfloat earthTimeIntervalTemp = earthTimeInterval;
 
 void displaySun();
 void displayPlanets();
@@ -70,7 +71,7 @@ void displaySun() {
 
 void displayPlanets() {
     displayEachPlanet(MERCURY_INCLINATION,
-                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, 0.1);
+                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, 0.1); // YELLOW SUN);
     displayEachPlanet(VENUS_INCLINATION,
                       VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, 0.2);
     displayEachPlanet(EARTH_INCLINATION,
@@ -142,8 +143,13 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative GLint
 
 void specialKeys(GLint key, GLint x, GLint y) {
     switch (key) {
-        case GLUT_KEY_UP:    // for pressing the up key, increases earth day speed
+        case GLUT_KEY_UP:    // for pressing the up key, increases earth day speed by 2x
             earthTimeInterval *= 2;
+            earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+            break;
+        case GLUT_KEY_DOWN:    // for pressing the down key, decreases earth day speed 0.5x
+            earthTimeInterval *= 0.5;
+            earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
             break;
     }
 }
@@ -154,7 +160,15 @@ void keyboard(unsigned char key, int x, int y)
         case 'q':
             exit(0);
             break;
-
+        case 's': // s = 'stop' and pauses planets
+            if(earthTimeInterval != 0.0f) { // if already paused, Temp var won't become 0
+                earthTimeIntervalTemp = earthTimeInterval;
+                earthTimeInterval = 0.0f;
+            }
+            break;
+        case 'g': // g = 'go' and continues planet movement
+            earthTimeInterval = earthTimeIntervalTemp;
+            break;
         default:
             break;
     }
@@ -165,7 +179,7 @@ void keyboard(unsigned char key, int x, int y)
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
     glutInitDisplayMode(GLUT_DOUBLE);  // Enable double buffered mode
-    glutInitWindowSize(640, 480);   // Set the window's initial width & height - non-square
+    glutInitWindowSize(700, 480);   // Set the window's initial width & height - non-square
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Solar System");  // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paGLint event

@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Test1.dir/solarsystem.cpp.o CMakeFiles/Test1.dir/test1.c.o  -o Test1 

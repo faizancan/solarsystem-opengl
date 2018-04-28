@@ -1,4 +1,4 @@
-# Install script for directory: /Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl
+# Install script for directory: /Users/maryforburger/solarsystem-opengl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/maryforburger/solarsystem-opengl/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

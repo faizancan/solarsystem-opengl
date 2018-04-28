@@ -1,3 +1,3 @@
-/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir
+/Users/maryforburger/solarsystem-opengl/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/maryforburger/solarsystem-opengl/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maryforburger/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir
