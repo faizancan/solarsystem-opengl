@@ -13,7 +13,7 @@ GLfloat earthTimeIntervalTemp = earthTimeInterval;
 
 void displaySun();
 void displayPlanets();
-void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color);
+void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color1, GLfloat color2, GLfloat color3);
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -71,34 +71,36 @@ void displaySun() {
 
 void displayPlanets() {
     displayEachPlanet(MERCURY_INCLINATION,
-                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, 0.1); // YELLOW SUN);
+                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, 1.0, 0.0, 0.0); // red
     displayEachPlanet(VENUS_INCLINATION,
-                      VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, 0.2);
+                      VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, 0.25, 0.0, 0.25); // dark purple
     displayEachPlanet(EARTH_INCLINATION,
-                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, 0.3);
+                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, 0.0, 0.5 ,0.0); //dark green
     displayEachPlanet(MARS_INCLINATION,
-                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, 0.4);
+                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, 0.5, 0.0,0.0); //dark red
     displayEachPlanet(JUPITER_INCLINATION,
-                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, 0.5);
+                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, 1.0, 0.5, 0.0); // orange
     displayEachPlanet(SATURN_INCLINATION,
-                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, 0.6);
+                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, 0.5, .25, 0.0); // dark orange
     displayEachPlanet(URANUS_INCLINATION,
-                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, 0.7);
+                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, 0.5, 0.0,0.5); // purple
     displayEachPlanet(NEPTUNE_INCLINATION,
-                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, 0.8);
+                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, 0.0, 0.0,1.0); // blue
     displayEachPlanet(PLUTO_INCLINATION,
-                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, 0.9);
+                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, 0.5, 0.5, 1.0); // light blue
 
 }
 
 // instead of bitmap field, we can use the color field
-void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color) {
+void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color1, GLfloat color2, GLfloat color3) {
     glPushMatrix();
 
     glRotatef(inclination, 0.0f, 0.0f, 1.0f);
     glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
-    glTranslatef(distanceFromSun, 0.0f, 0.0f);
+    glTranslatef(distanceFromSun/5.0f + 0.125f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
+
+    glColor3f(color1, color2, color3);
 
 //    glBegin(GL_POLYGON);
 //    glColor3f(color, 1.0f / color, 0.0f);
@@ -112,7 +114,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
     glPushMatrix();
     glTranslatef(0, 0.0, 0.0);
-    glutSolidSphere(0.1, 50, 50);
+    glutSolidSphere(0.03, 50, 50);
 
     glPopMatrix();
 
@@ -179,7 +181,7 @@ void keyboard(unsigned char key, int x, int y)
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
     glutInitDisplayMode(GLUT_DOUBLE);  // Enable double buffered mode
-    glutInitWindowSize(700, 480);   // Set the window's initial width & height - non-square
+    glutInitWindowSize(1100, 480);   // Set the window's initial width & height - non-square
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Solar System");  // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paGLint event
