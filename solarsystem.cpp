@@ -14,10 +14,7 @@ GLfloat earthTimeInterval = 1.0f;
 GLfloat earthTimeIntervalTemp = earthTimeInterval;
 GLint earthDaysTotal = 0;
 GLint earthYearsTotal = 0;
-GLint earthYearsTotalTemp1 = 0;
-GLint earthYearsTotalTemp2 = 0;
-GLint earthYearsTotalTemp3 = 0;
-GLint earthYearsTotalTemp4 = 0;
+GLint earthDaysSingleYr = 0;
 
 // Strings for key functions
 unsigned char string_legendTitle[] = "Key Functions:"; // length = 14
@@ -31,14 +28,13 @@ unsigned char string_DOWN[] = "Down arrow - Slow down"; // length = 22
 // Strings for counter display
 unsigned char string_years[] = "Earth Years Elapsed:"; // length = 21
 unsigned char string_days[] = "Day of Current Year:"; // length = 20
-unsigned char string_daysTotal[] = "Total Days Elapsed:"; // length = 19;
+unsigned char string_daysTotal[] = "Earth Days Elapsed:"; // length = 19;
 char numYears[10];
-char numDays[365];
+char numDays[10];
+char numSDays[10];
 unsigned char yrCount[] = "0";
-//unsigned char yrCountTens[] = "0";
-//unsigned char yrCountOnes[] = "0";
-//unsigned char yrCountOnes[] = "0";
 unsigned char dayCount[] = "0";
+unsigned char sDayCount[] = "0";
 
 void displaySun();
 void displayPlanets();
@@ -58,6 +54,7 @@ void Timer(GLint value) {
     earthDays += earthTimeInterval;
     earthDaysPerYear += earthTimeInterval;
     earthYearsTotal = earthDaysTotal / 365;
+    earthDaysSingleYr = earthDaysTotal % 365;
     if (earthDays >= 365) //this was earthDaysPerYear but I changed it because then it only set earthDays back to zero once
         earthDays -= 365;
     glutPostRedisplay();      // Post re-paGLint request to activate display()
@@ -87,6 +84,7 @@ void display() {
     std::cout << "earth days per year: " << earthDaysPerYear <<  std::endl;
     std::cout <<  "earth days total: " << earthDaysTotal << std::endl;
     std::cout <<  "earth years total: " << earthYearsTotal << std::endl;
+    std::cout << "earth days of single year: " << earthDaysSingleYr << std::endl;
 
 }
 
@@ -232,7 +230,10 @@ void displayCounter(){
 
     glPushMatrix();
     glColor3f(1.0f,1.0f,1.0f);
+
     sprintf(numYears, "%i", earthYearsTotal);
+    sprintf(numDays, "%i", earthDaysTotal);
+    sprintf(numSDays, "%i", earthDaysSingleYr);
 
     int yrLength = 0;
     if(earthYearsTotal < 10) {
@@ -251,18 +252,61 @@ void displayCounter(){
         exit(0);
     }
 
+    //can't figure out how to get the days of that year to work correctly so taking out
+    /*int sDayLength = 0;
+    if(earthDaysSingleYr < 10) {
+        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
+        sDayLength = 1;
+    }else if(earthDaysSingleYr < 100){
+        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
+        sDayCount[1] = static_cast<unsigned char>(numSDays[1]);
+        sDayLength = 2;
+    }else if(earthDaysSingleYr < 365){
+        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
+        sDayCount[1] = static_cast<unsigned char>(numSDays[1]);
+        sDayCount[2] = static_cast<unsigned char>(numSDays[2]);
+        sDayLength = 3;
+    }else{
+        exit(0);
+    }*/
 
-
-    sprintf(numDays, "%i", earthDaysTotal);
-
-   // yrCount[0] = static_cast<unsigned char>(numYears[0]);
-    //dayCount[0] = static_cast<unsigned char>(numDays[0]);
-
-    std::cout << "earth years: " << earthYears << std::endl;
-    std::cout << "num years: " << numYears << std::endl;
-    std::cout << yrCount << std::endl;
-    //std::cout <<  "earth days: " << earthDays << std::endl;
-    //std::cout << dayCount << std::endl;
+    int dayLength = 0;
+    if(earthDaysTotal < 10) {
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayLength = 1;
+    }else if(earthDaysTotal<100){
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayCount[1] = static_cast<unsigned char>(numDays[1]);
+        dayLength = 2;
+    }else if(earthDaysTotal<1000){
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayCount[1] = static_cast<unsigned char>(numDays[1]);
+        dayCount[2] = static_cast<unsigned char>(numDays[2]);
+        dayLength = 3;
+    }else if(earthDaysTotal<10000){
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayCount[1] = static_cast<unsigned char>(numDays[1]);
+        dayCount[2] = static_cast<unsigned char>(numDays[2]);
+        dayCount[3] = static_cast<unsigned char>(numDays[3]);
+        dayLength = 4;
+    }else if(earthDaysTotal<100000){
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayCount[1] = static_cast<unsigned char>(numDays[1]);
+        dayCount[2] = static_cast<unsigned char>(numDays[2]);
+        dayCount[3] = static_cast<unsigned char>(numDays[3]);
+        dayCount[4] = static_cast<unsigned char>(numDays[4]);
+        dayLength = 5;
+    }else if(earthDaysTotal<1000000){
+        dayCount[0] = static_cast<unsigned char>(numDays[0]);
+        dayCount[1] = static_cast<unsigned char>(numDays[1]);
+        dayCount[2] = static_cast<unsigned char>(numDays[2]);
+        dayCount[3] = static_cast<unsigned char>(numDays[3]);
+        dayCount[4] = static_cast<unsigned char>(numDays[4]);
+        dayCount[5] = static_cast<unsigned char>(numDays[5]);
+        dayLength = 6;
+    } else{
+        exit(0);
+    }
 
     // Years
     int key_years = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_years);
@@ -280,29 +324,37 @@ void displayCounter(){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,yrCount[i]);
     }
 
-    // Days
+    /*// Days
     int key_days = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_days);
-    glRasterPos2d(-2.2, 0.8);
+    glRasterPos2d(-2.2, 0.7);
     len = 20;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_days[i]);
     }
 
     // Day Count
-    //int key_dayqNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, dayCount);
-    //glRasterPos2d(-1.5, 0.8);
-    //len = 3;
-    //for(int i=0;i<len;i++){
-    //    glutBitmapCharacter(GLUT_BITMAP_8_BY_13,dayCount[i]);
-    //}
+    int key_dayNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, sDayCount);
+    glRasterPos2d(-1.5, 0.7);
+    len = sDayLength;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, sDayCount[i]);
+    }*/
 
     // Total Days
     int key_daysTotal = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysTotal);
-    glRasterPos2d(-2.2, 0.7);
+    glRasterPos2d(-2.2, 0.8);
     len = 19;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_daysTotal[i]);
     }
+    // Total Day Count
+    int key_dayTotalNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, dayCount);
+    glRasterPos2d(-1.5, 0.8);
+    len = dayLength;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,dayCount[i]);
+    }
+
     glPopMatrix();
 }
 /* Handler for window re-size event. Called back when the window first appears and
