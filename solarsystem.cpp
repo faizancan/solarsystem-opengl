@@ -13,6 +13,7 @@ GLfloat earthTimeInterval = 0.5f;
 void displaySun();
 void displayPlanets();
 void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color);
+GLuint LoadTexture( const char * filename );
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -110,9 +111,17 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 //    glEnd();
 
     glPushMatrix();
-    glTranslatef(0, 0.0, 0.0);
-    glutSolidSphere(0.1, 50, 50);
-
+    GLuint texture;
+    texture = LoadTexture( "../Bitmaps/earthmap.bmp" );
+    //glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    GLUquadricObj *sphere=NULL;
+    glEnable(GL_TEXTURE_2D);
+    sphere = gluNewQuadric();
+    gluQuadricTexture(sphere, GL_TRUE);
+    //gluQuadricDrawStyle(sphere, GLU_FILL);
+    gluQuadricNormals(sphere, GLU_SMOOTH);
+    gluSphere(sphere, 0.18, 20, 20);
+    gluDeleteQuadric(sphere);
     glPopMatrix();
 
     glPopMatrix();
@@ -161,6 +170,55 @@ void keyboard(unsigned char key, int x, int y)
     glutPostRedisplay();
 }
 
+GLuint LoadTexture( const char * filename )
+{
+
+    GLuint texture;
+
+    int width, height;
+
+    unsigned char * data;
+
+    FILE * file;
+
+    file = fopen( filename, "rb" );
+
+    if ( file == NULL ) return 0;
+    width = 1024;
+    height = 512;
+    data = (unsigned char *)malloc( width * height * 3 );
+    //int size = fseek(file,);
+    fread( data, width * height * 3, 1, file );
+    fclose( file );
+
+    for(int i = 0; i < width * height ; ++i)
+    {
+        int index = i*3;
+        unsigned char B,R;
+        B = data[index];
+        R = data[index+2];
+
+        data[index] = R;
+        data[index+2] = B;
+
+    }
+
+
+    glGenTextures( 1, &texture );
+    glBindTexture( GL_TEXTURE_2D, texture );
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
+
+
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
+    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height,GL_RGB, GL_UNSIGNED_BYTE, data );
+    free( data );
+
+    return texture;
+}
+
 /* Main function: GLUT runs as a console application starting at main() */
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
@@ -172,7 +230,7 @@ GLint main(GLint argc, char** argv) {
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
     glutTimerFunc(0, Timer, 0);     // First timer call immediately
     glutSpecialFunc(specialKeys); // Register callback handler for special-key event
-    glutKeyboardFunc(keyboard);
+    glutKeyboardFunc(keyboard);     //Register callback handler for keyboard events
     initGL();                       // Our own OpenGL initialization
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
