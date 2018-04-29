@@ -223,7 +223,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     gluSphere(sphere, 0.18, 20, 20);
     gluDeleteQuadric(sphere);*/
     glTranslatef(0, 0.0, 0.0);
-    glutSolidSphere(radius/1500000 + 0.0185, 50, 50); //scale radii add offset so all visible
+    glutSolidSphere(radius/1500000 + 0.02, 50, 50); //scale radii add offset so all visible
 
     glPopMatrix();
     glPopMatrix();
@@ -246,8 +246,8 @@ void displaySaturnRings(){
 
     glPushMatrix();
     glTranslatef(0, 0.0, 0.0);
-    GLdouble sat_rad = SATURN_RADIUS/2000000 + 0.0175;
-    glutSolidTorus(sat_rad - 0.0375,sat_rad+0.015, 10, 10); //scale radii add offset so all visible
+    GLdouble sat_rad = SATURN_RADIUS/2000000 + 0.02;
+    glutSolidTorus(sat_rad - 0.038,sat_rad+0.015, 10, 10); //scale radii add offset so all visible
 
     glPopMatrix();
 
