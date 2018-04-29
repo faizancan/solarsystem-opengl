@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/solarsystem.cpp" "/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir/solarsystem.cpp.o"
+  "/Users/maryforburger/solarsystem-opengl/solarsystem.cpp" "/Users/maryforburger/solarsystem-opengl/cmake-build-debug/CMakeFiles/SolarSystem.dir/solarsystem.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

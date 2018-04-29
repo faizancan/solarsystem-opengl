@@ -6,11 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/aribleemer/Documents/CLionProjects/Final_Project/solarsystem-opengl/solarsystem.cpp
+/Users/maryforburger/solarsystem-opengl/solarsystem.cpp
 iostream
 -
 sys/stat.h
 -
 GLUT/glut.h
 -
+solarsystem.h
+/Users/maryforburger/solarsystem-opengl/solarsystem.h
+string
+-
+
+/Users/maryforburger/solarsystem-opengl/solarsystem.h
 

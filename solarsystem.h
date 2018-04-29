@@ -45,5 +45,16 @@ const GLfloat URANUS_ROTATION = 0.71;
 const GLfloat NEPTUNE_ROTATION = 0.67f;
 const GLfloat PLUTO_ROTATION = 6.39;
 
+// Radii of planets in km
+const GLfloat MERCURY_RADIUS = 2439.5f;
+const GLfloat VENUS_RADIUS = 6052.0f;
+const GLfloat EARTH_RADIUS = 6378.0f;
+const GLfloat MARS_RADIUS = 3396.0f;
+const GLfloat JUPITER_RADIUS = 71492.0f;
+const GLfloat SATURN_RADIUS = 60268.0f;
+const GLfloat URANUS_RADIUS = 25559.0f;
+const GLfloat NEPTUNE_RADIUS = 24764.0f;
+const GLfloat PLUTO_RADIUS = 1185.0f;
+
 #define SOLARSYSTEM_H
 #endif
