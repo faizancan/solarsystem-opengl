@@ -81,7 +81,28 @@ void Timer(GLint value) {
 /* Handler for window-repaGLint event. Call back when the window first appears and
    whenever the window needs to be re-paGLinted. */
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   // Clear the color buffer
+
+    glPushMatrix();
+        glOrtho(0.0f, 1024.0, 512.0, 0.0, 0.0, 1.f);
+
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+
+        GLint texture;
+        texture = LoadTexture("../Planet_Bitmaps/stars.bmp");
+
+        glEnable( GL_TEXTURE_2D );
+
+        glBindTexture( GL_TEXTURE_2D, texture );
+
+        glBegin (GL_QUADS);
+        glTexCoord2d(0.0,0.0); glVertex2d(0.0,0.0);
+        glTexCoord2d(1.0,0.0); glVertex2d(1024.0,0.0);
+        glTexCoord2d(1.0,1.0); glVertex2d(1024.0,512.0);
+        glTexCoord2d(0.0,1.0); glVertex2d(0.0,512.0);
+        glEnd();
+    glPopMatrix();
 
     GLfloat model_ambient[] = {model_amb,model_amb,model_amb,1};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, model_ambient);
@@ -141,23 +162,6 @@ void displaySun() {
 
     glPopMatrix();
 
-    /*// this animation is filler
-    glBegin(GL_POLYGON);
-    glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
-    glVertex2f(-0.01f, -0.02f);
-    glVertex2f(0.0f, -0.04f); //point 1 (bottom)
-    glVertex2f( 0.01f, -0.02f);
-    glVertex2f(0.035f, -0.015f); //point 2
-    glVertex2f( 0.02f,  0.00f);
-    glVertex2f(0.035f, 0.015f); //point 3
-    glVertex2f( 0.01f,  0.02f);
-    glVertex2f(0.0f, 0.04f); //point 4
-    glVertex2f(-0.01f,  0.02f);
-    glVertex2f(-0.035f, 0.015f); //point 5
-    glVertex2f(-0.02f,  0.0f);
-    glVertex2f(-0.035f, -0.015f); //point 6
-    glEnd();*/
-
     glPopMatrix();
 }
 
@@ -197,18 +201,10 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
     glTranslatef(distanceFromSun/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
+    glRotatef( -90.0, 1.0, 0.0, 0.0 );
 
     glColor3f(color1, color2, color3);
 
-//    glBegin(GL_POLYGON);
-//    glColor3f(color, 1.0f / color, 0.0f);
-//    glVertex2f(-0.01f, -0.02f);
-//    glVertex2f( 0.01f, -0.02f);
-//    glVertex2f( 0.02f,  0.00f);
-//    glVertex2f( 0.01f,  0.02f);
-//    glVertex2f(-0.01f,  0.02f);
-//    glVertex2f(-0.02f,  0.00f);
-//    glEnd();
 
     glPushMatrix();
     /*GLuint texture;
@@ -573,7 +569,7 @@ GLuint LoadTexture( const char * filename )
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
     glutInitDisplayMode(GLUT_DOUBLE);  // Enable double buffered mode
-    glutInitWindowSize(1100, 480);   // Set the window's initial width & height - non-square
+    glutInitWindowSize(1024, 512);   // Set the window's initial width & height - non-square
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Solar System");  // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paGLint event
