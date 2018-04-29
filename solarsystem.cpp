@@ -16,6 +16,17 @@ GLint earthDaysTotal = 0;
 GLint earthYearsTotal = 0;
 GLint earthDaysSingleYr = 0;
 
+//light variables
+double model_amb = 0.7;
+double amb = 0.8;
+double diff = 0.8;
+double spec = 1.0;
+GLfloat global_ambient[] = {amb,amb,amb,1};
+GLfloat global_diffuse[] = {diff,diff,diff,1.0};
+GLfloat global_specular[] = {spec,spec,spec,1};
+GLfloat global_noSpec[] = {0.0,0.0,0.0,1};
+GLfloat light0_pos[] = {1,0,0,0.0};
+
 // Strings for key functions
 unsigned char string_legendTitle[] = "Key Functions:"; // length = 14
 unsigned char string_q[] = "q - Quit"; // length = 9
@@ -45,6 +56,7 @@ void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPe
 void displayKeyFunctions();
 void displayCounter();
 void displaySaturnRings();
+void turnOnLights();
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -70,10 +82,19 @@ void Timer(GLint value) {
    whenever the window needs to be re-paGLinted. */
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer
+
+    GLfloat model_ambient[] = {model_amb,model_amb,model_amb,1};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, model_ambient);
+
+    glEnable(GL_LIGHTING);
+    turnOnLights();
+
     glMatrixMode(GL_MODELVIEW);     // To operate on Model-View matrix
     glLoadIdentity();               // Reset the model-view matrix
 
     // display functions go here
+    //turnOnLights();
+
     displaySun();
     displayPlanets();
     displayKeyFunctions();
@@ -85,9 +106,31 @@ void display() {
     angle += 2.0f;
 
 }
+void turnOnLights(){
+    glEnable(GL_LIGHTING);
+
+    glPushMatrix();
+
+    //GLfloat model_ambient[] = {model_amb,model_amb,model_amb,1};
+
+    //glLightModelfv(GL_LIGHT_MODEL_AMBIENT, model_ambient);
+    glLightfv(GL_LIGHT0,GL_AMBIENT,global_ambient);
+    glLightfv(GL_LIGHT0,GL_SPECULAR,global_specular);
+    glLightfv(GL_LIGHT0,GL_DIFFUSE,global_diffuse);
+    glLightfv(GL_LIGHT0,GL_POSITION,light0_pos);
+
+    glEnable(GL_LIGHT0);
+
+    glPopMatrix();
+}
 
 void displaySun() {
     glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glEnable(GL_COLOR_MATERIAL);
+    glShadeModel(GL_SMOOTH);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, global_noSpec);
 
     glRotatef(360.0f * earthDays / 24.0, 0.0f, 1.0f, 0.0f); //
 
@@ -124,19 +167,19 @@ void displayPlanets() {
     displayEachPlanet(VENUS_INCLINATION,
                       VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, VENUS_RADIUS, 0.25, 0.0, 0.25); // dark purple
     displayEachPlanet(EARTH_INCLINATION,
-                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, EARTH_RADIUS, 0.0, 0.5 ,0.0); //dark green
+                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, EARTH_RADIUS, 0.0, 0.3 ,0.0); //dark green
     displayEachPlanet(MARS_INCLINATION,
-                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, MARS_RADIUS, 0.5, 0.0,0.0); //dark red
+                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, MARS_RADIUS, 0.3, 0.0,0.0); //dark red
     displayEachPlanet(JUPITER_INCLINATION,
-                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, 1.0, 0.35, 0.0); // orange
+                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, 0.75, 0.2, 0.0); // orange
     displayEachPlanet(SATURN_INCLINATION,
-                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, 0.75, .45, 0.0); // dark yellow
+                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, 0.6, .35, 0.0); // dark yellow
     displayEachPlanet(URANUS_INCLINATION,
-                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, URANUS_RADIUS, 0.5, 0.0,0.5); // purple
+                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, URANUS_RADIUS, 0.4, 0.0,0.4); // purple
     displayEachPlanet(NEPTUNE_INCLINATION,
-                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, NEPTUNE_RADIUS, 0.0, 0.0,1.0); // blue
+                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, NEPTUNE_RADIUS, 0.0, 0.0,0.5); // blue
     displayEachPlanet(PLUTO_INCLINATION,
-                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, PLUTO_RADIUS, 0.5, 0.5, 1.0); // light blue
+                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, PLUTO_RADIUS, 0.35, 0.35, 0.8); // light blue
     displaySaturnRings();
 }
 
@@ -144,6 +187,11 @@ void displayPlanets() {
 void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod,
                             GLfloat radius,GLfloat color1, GLfloat color2, GLfloat color3) {
     glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glEnable(GL_COLOR_MATERIAL);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, global_noSpec);
+    glShadeModel(GL_SMOOTH);
 
     glRotatef(inclination, 0.0f, 0.0f, 1.0f);
     glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
@@ -163,7 +211,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 //    glEnd();
 
     glPushMatrix();
-    GLuint texture;
+    /*GLuint texture;
     texture = LoadTexture( "../Bitmaps/earthmap.bmp" );
     //glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     GLUquadricObj *sphere=NULL;
@@ -173,9 +221,9 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     //gluQuadricDrawStyle(sphere, GLU_FILL);
     gluQuadricNormals(sphere, GLU_SMOOTH);
     gluSphere(sphere, 0.18, 20, 20);
-    gluDeleteQuadric(sphere);
+    gluDeleteQuadric(sphere);*/
     glTranslatef(0, 0.0, 0.0);
-    glutSolidSphere(radius/2000000 + 0.0175, 50, 50); //scale radii add offset so all visible
+    glutSolidSphere(radius/1500000 + 0.0185, 50, 50); //scale radii add offset so all visible
 
     glPopMatrix();
     glPopMatrix();
@@ -183,6 +231,10 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
 void displaySaturnRings(){
     glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, global_noSpec);
+    glEnable(GL_COLOR_MATERIAL);
 
     glRotatef(SATURN_INCLINATION, 0.0f, 0.0f, 1.0f);
     glRotatef(360.0f * earthDaysPerYear / SATURN_ORBIT, 0.0f, 1.0f, 0.0f);
@@ -206,6 +258,11 @@ void displaySaturnRings(){
 
 void displayKeyFunctions(){
     glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, global_specular);
+    glEnable(GL_COLOR_MATERIAL);
+
     glColor3f(1.0f,1.0f,1.0f);
 
     // title
@@ -269,6 +326,10 @@ void displayKeyFunctions(){
 void displayCounter(){
 
     glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glEnable(GL_COLOR_MATERIAL);
+
     glColor3f(1.0f,1.0f,1.0f);
 
     sprintf(numYears, "%i", earthYearsTotal);
@@ -521,6 +582,7 @@ GLint main(GLint argc, char** argv) {
     glutSpecialFunc(specialKeys); // Register callback handler for special-key event
     glutKeyboardFunc(keyboard);     //Register callback handler for keyboard events
     initGL();                       // Our own OpenGL initialization
+    turnOnLights();
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
 }
