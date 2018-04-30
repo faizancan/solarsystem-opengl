@@ -3,6 +3,7 @@
 #include <GLUT/glut.h>  // GLUT, include glu.h and gl.h
 #include "solarsystem.h"
 #include <string>
+#include "RGBpixmap.h"
 
 // global variable
 GLfloat angle = 0.0f;  // rotational angle of the shapes
@@ -15,6 +16,17 @@ GLfloat earthTimeIntervalTemp = earthTimeInterval;
 GLint earthDaysTotal = 0;
 GLint earthYearsTotal = 0;
 GLint earthDaysSingleYr = 0;
+
+GLuint SunTexture = 0;
+GLuint MercuryTexture = 1;
+GLuint VenusTexture = 2;
+GLuint EarthTexture = 3;
+GLuint MarsTexture = 4;
+GLuint JupiterTexture = 5;
+GLuint SaturnTexture = 6;
+GLuint NeptuneTexture = 7;
+GLuint UranusTexture = 8;
+GLuint PlutoTexture = 9;
 
 //light variables
 double model_amb = 0.7;
@@ -78,10 +90,18 @@ void Timer(GLint value) {
 
 }
 
+void makeTextures(){
+//    SunTexture =
+//    MercuryTexture =
+//    VenusTexture
+    EarthTexture = LoadTexture("../Planet_Bitmaps/earthmap1k.bmp");
+    MarsTexture = LoadTexture("../Planet_Bitmaps/sunmap.bmp");
+}
+
 /* Handler for window-repaGLint event. Call back when the window first appears and
    whenever the window needs to be re-paGLinted. */
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   // Clear the color buffer
+    glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer
 
     glPushMatrix();
         glOrtho(0.0f, 1024.0, 512.0, 0.0, 0.0, 1.f);
@@ -155,9 +175,10 @@ void displaySun() {
 
     glRotatef(360.0f * earthDays / 24.0, 0.0f, 1.0f, 0.0f); //
 
-    glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
+    //glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
     glPushMatrix();
     glTranslatef(0, 0.0, 0.0);
+    glBindTexture(GL_TEXTURE_2D, MarsTexture);
     glutSolidSphere(0.03, 50,50); //scale radii add offset so all visible
 
     glPopMatrix();
@@ -201,9 +222,8 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
     glTranslatef(distanceFromSun/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
-    glRotatef( -90.0, 1.0, 0.0, 0.0 );
 
-    glColor3f(color1, color2, color3);
+    //glColor3f(color1, color2, color3);
 
 
     glPushMatrix();
@@ -218,8 +238,18 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     gluQuadricNormals(sphere, GLU_SMOOTH);
     gluSphere(sphere, 0.18, 20, 20);
     gluDeleteQuadric(sphere);*/
+    RGBpixmap pixmap;
+    GLint texture;
+    glBindTexture(GL_TEXTURE_2D, EarthTexture);
     glTranslatef(0, 0.0, 0.0);
-    glutSolidSphere(radius/1500000 + 0.02, 50, 50); //scale radii add offset so all visible
+    GLUquadricObj *sphere=NULL;
+    sphere = gluNewQuadric();
+    gluQuadricTexture(sphere, GL_TRUE);
+    gluQuadricDrawStyle(sphere, GLU_FILL);
+    gluQuadricNormals(sphere, GLU_SMOOTH);
+    gluSphere(sphere, radius/1500000 + 0.02, 50, 50);
+    gluDeleteQuadric(sphere);
+    //glutSolidSphere(radius/1500000 + 0.02, 50, 50); //scale radii add offset so all visible
 
     glPopMatrix();
     glPopMatrix();
@@ -530,8 +560,8 @@ GLuint LoadTexture( const char * filename )
     file = fopen( filename, "rb" );
 
     if ( file == NULL ) return 0;
-    width = 1024;
-    height = 512;
+    width = 1000;
+    height = 500;
     data = (unsigned char *)malloc( width * height * 3 );
     //int size = fseek(file,);
     fread( data, width * height * 3, 1, file );
@@ -553,10 +583,9 @@ GLuint LoadTexture( const char * filename )
     glGenTextures( 1, &texture );
     glBindTexture( GL_TEXTURE_2D, texture );
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
-
 
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
     gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height,GL_RGB, GL_UNSIGNED_BYTE, data );
@@ -579,6 +608,7 @@ GLint main(GLint argc, char** argv) {
     glutKeyboardFunc(keyboard);     //Register callback handler for keyboard events
     initGL();                       // Our own OpenGL initialization
     turnOnLights();
+    makeTextures();
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
 }
