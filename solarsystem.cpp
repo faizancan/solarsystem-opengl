@@ -27,6 +27,7 @@ GLuint NeptuneTexture = 7;
 GLuint UranusTexture = 8;
 GLuint PlutoTexture = 9;
 GLuint SaturnRingsTexture = 10;
+GLuint StarsTexture = 10;
 
 //light variables
 double model_amb = 0.7;
@@ -102,6 +103,7 @@ void makeTextures(){
     NeptuneTexture = LoadTexture("../Planet_Bitmaps/neptunemap.bmp");
     PlutoTexture = LoadTexture("../Planet_Bitmaps/plutomap1k.bmp");
     SaturnRingsTexture = LoadTexture("../Planet_Bitmaps/saturnringcolor.bmp");
+    StarsTexture = LoadTexture("../Planet_Bitmaps/stars.bmp");
 }
 
 /* Handler for window-repaGLint event. Call back when the window first appears and
@@ -115,12 +117,9 @@ void display() {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
 
-        GLint texture;
-        texture = LoadTexture("../Planet_Bitmaps/stars.bmp");
-
         glEnable( GL_TEXTURE_2D );
 
-        glBindTexture( GL_TEXTURE_2D, texture );
+        glBindTexture( GL_TEXTURE_2D, StarsTexture );
 
         glBegin (GL_QUADS);
         glTexCoord2d(0.0,0.0); glVertex2d(0.0,0.0);
@@ -225,7 +224,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     glShadeModel(GL_SMOOTH);
 
     glRotatef(inclination, 0.0f, 0.0f, 1.0f);
-    glRotatef(360.0f * earthDaysPerYear / orbitPeriod, 0.0f, 1.0f, 0.0f);
+    glRotatef(GLint(360.0f * earthDaysPerYear / orbitPeriod) % 360, 0.0f, 1.0f, 0.0f);
     glTranslatef(distanceFromSun/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
 
@@ -240,9 +239,9 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
     gluQuadricTexture(sphere, GL_TRUE);
     gluQuadricDrawStyle(sphere, GLU_FILL);
     gluQuadricNormals(sphere, GLU_SMOOTH);
+    glRotatef(90, 1, 0, 0);
     gluSphere(sphere, radius/1500000 + 0.02, 50, 50);
     gluDeleteQuadric(sphere);
-    //glutSolidSphere(radius/1500000 + 0.02, 50, 50); //scale radii add offset so all visible
 
     glPopMatrix();
     glPopMatrix();
@@ -557,7 +556,6 @@ GLuint LoadTexture( const char * filename )
     width = 1000;
     height = 500;
     data = (unsigned char *)malloc( width * height * 3 );
-    //int size = fseek(file,);
     fread( data, width * height * 3, 1, file );
     fclose( file );
 
@@ -573,15 +571,12 @@ GLuint LoadTexture( const char * filename )
 
     }
 
-
     glGenTextures( 1, &texture );
     glBindTexture( GL_TEXTURE_2D, texture );
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE );
 
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
     gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height,GL_RGB, GL_UNSIGNED_BYTE, data );
     free( data );
 

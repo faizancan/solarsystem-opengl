@@ -21,6 +21,6 @@ endif(NOT OPENGL_FOUND)
 
 set( SRC solarsystem.cpp )
 
-add_executable( SolarSystem ${SRC} solarsystem.cpp RGBpixmap.cpp)
+add_executable( SolarSystem ${SRC} solarsystem.cpp )
 
 target_link_libraries(SolarSystem ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
