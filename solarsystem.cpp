@@ -3,7 +3,6 @@
 #include <GLUT/glut.h>  // GLUT, include glu.h and gl.h
 #include "solarsystem.h"
 #include <string>
-#include "RGBpixmap.h"
 
 // global variable
 GLfloat angle = 0.0f;  // rotational angle of the shapes
@@ -27,6 +26,7 @@ GLuint SaturnTexture = 6;
 GLuint NeptuneTexture = 7;
 GLuint UranusTexture = 8;
 GLuint PlutoTexture = 9;
+GLuint SaturnRingsTexture = 10;
 
 //light variables
 double model_amb = 0.7;
@@ -64,7 +64,7 @@ void displayPlanets();
 void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod, GLfloat color);
 GLuint LoadTexture( const char * filename );
 void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod,
-                            GLfloat radius, GLfloat color1, GLfloat color2, GLfloat color3);
+                            GLfloat radius, GLuint &texture);
 void displayKeyFunctions();
 void displayCounter();
 void displaySaturnRings();
@@ -91,11 +91,17 @@ void Timer(GLint value) {
 }
 
 void makeTextures(){
-//    SunTexture =
-//    MercuryTexture =
-//    VenusTexture
+    SunTexture = LoadTexture("../Planet_Bitmaps/sunmap.bmp");
+    MercuryTexture = LoadTexture("../Planet_Bitmaps/mercurymap.bmp");
+    VenusTexture =  LoadTexture("../Planet_Bitmaps/venusmap.bmp");
     EarthTexture = LoadTexture("../Planet_Bitmaps/earthmap1k.bmp");
-    MarsTexture = LoadTexture("../Planet_Bitmaps/sunmap.bmp");
+    MarsTexture = LoadTexture("../Planet_Bitmaps/marsmap1k.bmp");
+    JupiterTexture = LoadTexture("../Planet_Bitmaps/jupitermap.bmp");
+    SaturnTexture = LoadTexture("../Planet_Bitmaps/saturnmap.bmp");
+    UranusTexture = LoadTexture("../Planet_Bitmaps/uranusmap.bmp");
+    NeptuneTexture = LoadTexture("../Planet_Bitmaps/neptunemap.bmp");
+    PlutoTexture = LoadTexture("../Planet_Bitmaps/plutomap1k.bmp");
+    SaturnRingsTexture = LoadTexture("../Planet_Bitmaps/saturnringcolor.bmp");
 }
 
 /* Handler for window-repaGLint event. Call back when the window first appears and
@@ -178,7 +184,7 @@ void displaySun() {
     //glColor3f(1.0f, 1.0f, 0.0f); // YELLOW SUN
     glPushMatrix();
     glTranslatef(0, 0.0, 0.0);
-    glBindTexture(GL_TEXTURE_2D, MarsTexture);
+    glBindTexture(GL_TEXTURE_2D, SunTexture);
     glutSolidSphere(0.03, 50,50); //scale radii add offset so all visible
 
     glPopMatrix();
@@ -188,29 +194,29 @@ void displaySun() {
 
 void displayPlanets() {
     displayEachPlanet(MERCURY_INCLINATION,
-                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, MERCURY_RADIUS, 1.0, 0.0, 0.0); // red
+                      MERCURY_DISTANCE, MERCURY_ROTATION, MERCURY_ORBIT, MERCURY_RADIUS, MercuryTexture); // red
     displayEachPlanet(VENUS_INCLINATION,
-                      VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, VENUS_RADIUS, 0.25, 0.0, 0.25); // dark purple
+                      VENUS_DISTANCE, VENUS_ROTATION, VENUS_ORBIT, VENUS_RADIUS, VenusTexture); // dark purple
     displayEachPlanet(EARTH_INCLINATION,
-                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, EARTH_RADIUS, 0.0, 0.3 ,0.0); //dark green
+                      EARTH_DISTANCE, EARTH_ROTATION, EARTH_ORBIT, EARTH_RADIUS, EarthTexture); //dark green
     displayEachPlanet(MARS_INCLINATION,
-                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, MARS_RADIUS, 0.3, 0.0,0.0); //dark red
+                      MARS_DISTANCE, MARS_ROTATION, MARS_ORBIT, MARS_RADIUS, MarsTexture); //dark red
     displayEachPlanet(JUPITER_INCLINATION,
-                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, 0.75, 0.2, 0.0); // orange
+                      JUPITER_DISTANCE, JUPITER_ROTATION, JUPITER_ORBIT, JUPITER_RADIUS, JupiterTexture); // orange
     displayEachPlanet(SATURN_INCLINATION,
-                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, 0.6, .35, 0.0); // dark yellow
+                      SATURN_DISTANCE, SATURN_ROTATION, SATURN_ORBIT, SATURN_RADIUS, SaturnTexture); // dark yellow
     displayEachPlanet(URANUS_INCLINATION,
-                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, URANUS_RADIUS, 0.4, 0.0,0.4); // purple
+                      URANUS_DISTANCE, URANUS_ROTATION, URANUS_ORBIT, URANUS_RADIUS, UranusTexture); // purple
     displayEachPlanet(NEPTUNE_INCLINATION,
-                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, NEPTUNE_RADIUS, 0.0, 0.0,0.5); // blue
+                      NEPTUNE_DISTANCE, NEPTUNE_ROTATION, NEPTUNE_ORBIT, NEPTUNE_RADIUS, NeptuneTexture); // blue
     displayEachPlanet(PLUTO_INCLINATION,
-                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, PLUTO_RADIUS, 0.35, 0.35, 0.8); // light blue
+                      PLUTO_DISTANCE, PLUTO_ROTATION, PLUTO_ORBIT, PLUTO_RADIUS, PlutoTexture); // light blue
     displaySaturnRings();
 }
 
 // instead of bitmap field, we can use the color field
 void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rotationPeriod, GLfloat orbitPeriod,
-                            GLfloat radius,GLfloat color1, GLfloat color2, GLfloat color3) {
+                            GLfloat radius,GLuint &texture) {
     glPushMatrix();
 
     glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
@@ -227,20 +233,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
 
     glPushMatrix();
-    /*GLuint texture;
-    texture = LoadTexture( "../Bitmaps/earthmap.bmp" );
-    //glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    GLUquadricObj *sphere=NULL;
-    glEnable(GL_TEXTURE_2D);
-    sphere = gluNewQuadric();
-    gluQuadricTexture(sphere, GL_TRUE);
-    //gluQuadricDrawStyle(sphere, GLU_FILL);
-    gluQuadricNormals(sphere, GLU_SMOOTH);
-    gluSphere(sphere, 0.18, 20, 20);
-    gluDeleteQuadric(sphere);*/
-    RGBpixmap pixmap;
-    GLint texture;
-    glBindTexture(GL_TEXTURE_2D, EarthTexture);
+    glBindTexture(GL_TEXTURE_2D, texture);
     glTranslatef(0, 0.0, 0.0);
     GLUquadricObj *sphere=NULL;
     sphere = gluNewQuadric();
@@ -268,10 +261,11 @@ void displaySaturnRings(){
     //glRotatef(360.0f * earthDays / SATURN_ROTATION + 90, 1.0f, 1.0f, 0.0f);
     glRotatef(360.0f/SATURN_ROTATION + 45, 0.5f, 0.0f, 0.0f);
 
-    glColor3f(1.0f, 0.0f, 0.0f); // red
+//    glColor3f(1.0f, 0.0f, 0.0f); // red
 
     glPushMatrix();
     glTranslatef(0, 0.0, 0.0);
+    glBindTexture(GL_TEXTURE_2D, SaturnRingsTexture);
     GLdouble sat_rad = SATURN_RADIUS/2000000 + 0.02;
     glutSolidTorus(sat_rad - 0.038,sat_rad+0.015, 10, 10); //scale radii add offset so all visible
 
