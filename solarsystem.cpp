@@ -1,3 +1,4 @@
+#include <OpenGL/OpenGL.h>
 #include <iostream>
 #include <sys/stat.h>
 #include <GLUT/glut.h>  // GLUT, include glu.h and gl.h
@@ -28,6 +29,14 @@ GLuint UranusTexture = 8;
 GLuint PlutoTexture = 9;
 GLuint SaturnRingsTexture = 10;
 GLuint StarsTexture = 10;
+
+// window
+
+GLuint windowWidth = 1024;
+GLuint windowHeight = 512;
+GLuint viewportWidth = 1024;
+GLuint viewportHeight = 512;
+
 
 //light variables
 double model_amb = 0.7;
@@ -484,19 +493,24 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative GLint
     if (height == 0) height = 1;                // To prevent divide by 0
     GLfloat aspect = (GLfloat)width / (GLfloat)height;
 
-    // Set the viewport to cover the new window
-    glViewport(0, 0, width, height);
+    windowWidth = width;
+    windowHeight = height;
 
-    // Set the aspect ratio of the clipping area to match the viewport
+    if (aspect > 2) {
+        viewportWidth = height * 2;
+        viewportHeight = height;
+    } else {
+        viewportWidth = width;
+        viewportHeight = width / 2;
+    }
+
+    // Set the viewport to cover the new window
+    glViewport((width - viewportWidth) / 2, (height - viewportHeight) / 2, viewportWidth, viewportHeight);
+
     glMatrixMode(GL_PROJECTION);  // To operate on the Projection matrix
     glLoadIdentity();
-    if (width >= height) {
-        // aspect >= 1, set the height from -1 to 1, with larger width
-        gluOrtho2D(-1.0 * aspect, 1.0 * aspect, -1.0, 1.0);
-    } else {
-        // aspect < 1, set the width to -1 to 1, with larger height
-        gluOrtho2D(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect);
-    }
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
 
 void specialKeys(GLint key, GLint x, GLint y) {
@@ -586,13 +600,14 @@ GLuint LoadTexture( const char * filename )
 /* Main function: GLUT runs as a console application starting at main() */
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
-    glutInitDisplayMode(GLUT_DOUBLE);  // Enable double buffered mode
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);  // Enable double buffered mode
     glutInitWindowSize(1024, 512);   // Set the window's initial width & height - non-square
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Solar System");  // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paGLint event
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
     glutTimerFunc(0, Timer, 0);     // First timer call immediately
+    glViewport(0, 0, 1024, 512);
     glutSpecialFunc(specialKeys); // Register callback handler for special-key event
     glutKeyboardFunc(keyboard);     //Register callback handler for keyboard events
     initGL();                       // Our own OpenGL initialization
