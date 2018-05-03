@@ -80,7 +80,6 @@ unsigned char dayCount[] = "0000000000";
 GLint speed_change = 0;
 unsigned char speed_normal[] = "None";
 unsigned char speed_pos[] = "+";
-unsigned char speed_neg[] = "-";
 char currentSpeed[10];
 unsigned char speed[] = "000000";
 
