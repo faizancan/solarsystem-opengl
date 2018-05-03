@@ -60,14 +60,29 @@ unsigned char string_DOWN[] = "down arrow - Slow down"; // length = 22
 
 // Strings for counter display
 unsigned char string_years[] = "Earth Years Elapsed:"; // length = 21
-unsigned char string_days[] = "Day of Current Year:"; // length = 20
-unsigned char string_daysTotal[] = "Earth Days Elapsed:"; // length = 19;
+unsigned char string_daysTotal[] = "Earth Days Elapsed:"; // length = 19
+unsigned char string_daysCurrent[] = "Day of Current Year:"; //length = 20
+unsigned char string_speed[] = "Speed Change:"; // length = 13
+unsigned char string_status[] = "Current Status:"; // length = 15
+
+unsigned char string_pause[] = "Paused"; // length = 6
+unsigned char string_rev[] = "Reversed"; // length = 8
+unsigned char string_norm[] = "Normal"; // length = 6
+unsigned char string_acc[] = "Accelerated"; // length = 11
+
+
 char numYears[10];
 char numDays[10];
-//char numSDays[10];
-unsigned char yrCount[] = "0";
-unsigned char dayCount[] = "0";
-//unsigned char sDayCount[] = "0";
+char cDays[10];
+unsigned char yrCount[] = "000000";
+unsigned char yrCurrent[] = "0000";
+unsigned char dayCount[] = "0000000000";
+GLint speed_change = 0;
+unsigned char speed_normal[] = "None";
+unsigned char speed_pos[] = "+";
+unsigned char speed_neg[] = "-";
+char currentSpeed[10];
+unsigned char speed[] = "000000";
 
 void displaySun();
 void displayPlanets();
@@ -77,6 +92,8 @@ void displayEachPlanet(GLfloat tilt, GLfloat distanceFromSun, GLfloat rotationPe
                             GLfloat radius, GLuint &texture);
 void displayKeyFunctions();
 void displayCounter();
+void displaySpeed();
+void displayStatus();
 void displaySaturnRings();
 void turnOnLights();
 
@@ -88,7 +105,7 @@ void initGL() {
 
 /* Called back when timer expired */
 void Timer(GLint value) {
-    earthDaysTotal += 1*earthTimeInterval; //not correct bc update can happen not at 1 day rate - place holder
+    earthDaysTotal += 1*earthTimeInterval;
     earthDays += earthTimeInterval;
     earthDaysPerYear += earthTimeInterval;
     earthYearsTotal = earthDaysTotal / 365;
@@ -156,6 +173,8 @@ void display() {
     displayPlanets();
     displayKeyFunctions();
     displayCounter();
+    displaySpeed();
+    displayStatus();
 
     glutSwapBuffers();   // Double buffered - swap the front and back buffers
 
@@ -297,7 +316,7 @@ void displayKeyFunctions(){
 
     // title
     int key_title = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_legendTitle);
-    glRasterPos2d(-2.2,-0.85);
+    glRasterPos2d(-0.99,-0.85);
     int len = 14;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_legendTitle[i]);
@@ -305,7 +324,7 @@ void displayKeyFunctions(){
 
     // quit
     int key_q = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_q);
-    glRasterPos2d(-1.7,-0.85);
+    glRasterPos2d(-0.75,-0.85);
     len = 9;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_q[i]);
@@ -313,7 +332,7 @@ void displayKeyFunctions(){
 
     // pause
     int key_p = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_p);
-    glRasterPos2d(-1.35,-0.85);
+    glRasterPos2d(-0.6,-0.85);
     len = 9;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_p[i]);
@@ -321,7 +340,7 @@ void displayKeyFunctions(){
 
     // continue
     int key_c = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_c);
-    glRasterPos2d(-1.0,-0.85);
+    glRasterPos2d(-0.43,-0.85);
     len = 12;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_c[i]);
@@ -329,7 +348,7 @@ void displayKeyFunctions(){
 
     // reverse
     int key_r = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_r);
-    glRasterPos2d(-0.5,-0.85);
+    glRasterPos2d(-0.2,-0.85);
     len = 11;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_r[i]);
@@ -337,7 +356,7 @@ void displayKeyFunctions(){
 
     // Speed up
     int key_UP = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_UP);
-    glRasterPos2d(-1.7,-0.95);
+    glRasterPos2d(-0.75,-0.95);
     len = 19;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_UP[i]);
@@ -345,7 +364,7 @@ void displayKeyFunctions(){
 
     // Slow down
     int key_DOWN = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_DOWN);
-    glRasterPos2d(-0.95,-0.95);
+    glRasterPos2d(-0.4,-0.95);
     len = 22;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_DOWN[i]);
@@ -362,9 +381,11 @@ void displayCounter(){
 
     glColor3f(1.0f,1.0f,1.0f);
 
-    sprintf(numYears, "%i", earthYearsTotal);
     sprintf(numDays, "%i", earthDaysTotal);
-    //sprintf(numSDays, "%i", earthDaysSingleYr);
+    earthYearsTotal = earthDaysTotal / 365; //make sure if time interval is fast, yrs are accurate
+    sprintf(numYears, "%i", earthYearsTotal); //to current num of yrs
+
+    sprintf(cDays, "%i", earthDaysSingleYr);
 
     int yrLength = 0;
     if(earthYearsTotal < 10) {
@@ -383,23 +404,22 @@ void displayCounter(){
         exit(0);
     }
 
-    //can't figure out how to get the days of that year to work correctly so taking out
-    /*int sDayLength = 0;
+    int dayYrLength = 0;
     if(earthDaysSingleYr < 10) {
-        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
-        sDayLength = 1;
-    }else if(earthDaysSingleYr < 100){
-        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
-        sDayCount[1] = static_cast<unsigned char>(numSDays[1]);
-        sDayLength = 2;
-    }else if(earthDaysSingleYr < 365){
-        sDayCount[0] = static_cast<unsigned char>(numSDays[0]);
-        sDayCount[1] = static_cast<unsigned char>(numSDays[1]);
-        sDayCount[2] = static_cast<unsigned char>(numSDays[2]);
-        sDayLength = 3;
+        yrCurrent[0] = static_cast<unsigned char>(cDays[0]);
+        dayYrLength = 1;
+    }else if(earthDaysSingleYr<100){
+        yrCurrent[0] = static_cast<unsigned char>(cDays[0]);
+        yrCurrent[1] = static_cast<unsigned char>(cDays[1]);
+        dayYrLength = 2;
+    }else if(earthDaysSingleYr<1000){
+        yrCurrent[0] = static_cast<unsigned char>(cDays[0]);
+        yrCurrent[1] = static_cast<unsigned char>(cDays[1]);
+        yrCurrent[2] = static_cast<unsigned char>(cDays[2]);
+        dayYrLength = 3;
     }else{
         exit(0);
-    }*/
+    }
 
     int dayLength = 0;
     if(earthDaysTotal < 10) {
@@ -441,7 +461,7 @@ void displayCounter(){
 
     // Years
     int key_years = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_years);
-    glRasterPos2d(-2.2, 0.9);
+    glRasterPos2d(-0.99, 0.9);
     int len = 21;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_years[i]);
@@ -449,44 +469,155 @@ void displayCounter(){
 
     // Year Count
     int key_yearNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, yrCount);
-    glRasterPos2d(-1.5, 0.9);
+    glRasterPos2d(-0.66, 0.9);
     len = yrLength;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,yrCount[i]);
     }
 
-    /*// Days
-    int key_days = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_days);
-    glRasterPos2d(-2.2, 0.7);
-    len = 20;
-    for(int i=0;i<len;i++){
-        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_days[i]);
-    }
-
-    // Day Count
-    int key_dayNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, sDayCount);
-    glRasterPos2d(-1.5, 0.7);
-    len = sDayLength;
-    for(int i=0;i<len;i++){
-        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, sDayCount[i]);
-    }*/
-
     // Total Days
     int key_daysTotal = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysTotal);
-    glRasterPos2d(-2.2, 0.8);
+    glRasterPos2d(-0.99, 0.8);
     len = 19;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_daysTotal[i]);
     }
     // Total Day Count
     int key_dayTotalNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, dayCount);
-    glRasterPos2d(-1.5, 0.8);
+    glRasterPos2d(-0.68, 0.8);
     len = dayLength;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,dayCount[i]);
     }
+    // Day per year
+    int key_current = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysCurrent);
+    glRasterPos2d(-0.99, 0.7);
+    len = 20;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_daysCurrent[i]);
+    }
+
+    // Day per year
+    int key_currentNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, yrCurrent);
+    glRasterPos2d(-0.66, 0.7);
+    len = dayYrLength;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,yrCurrent[i]);
+    }
 
     glPopMatrix();
+}
+void displaySpeed(){
+
+    glPushMatrix();
+
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glEnable(GL_COLOR_MATERIAL);
+
+    glColor3f(1.0f,1.0f,1.0f);
+
+    sprintf(currentSpeed, "%i", abs(speed_change));
+
+    // Speed
+    int key_speedTitle = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_speed);
+    glRasterPos2d(-0.99, 0.6);
+    int len = 13;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_speed[i]);
+    }
+
+    int speedLength = 0;
+    if(speed_change == 0) {
+        int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_normal);
+        glRasterPos2d(-0.77, 0.6);
+        len = 4;
+        for(int i=0;i<len;i++){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13,speed_normal[i]);
+        }
+    }else if(abs(speed_change) != 0){
+        if(abs(speed_change) < 10) {
+            speed[0] = static_cast<unsigned char>(currentSpeed[0]);
+            speedLength = 1;
+        }else if(earthDaysSingleYr<100){
+            speed[0] = static_cast<unsigned char>(currentSpeed[0]);
+            speed[1] = static_cast<unsigned char>(currentSpeed[1]);
+            speedLength = 2;
+        }else if(earthDaysSingleYr<1000){
+            speed[0] = static_cast<unsigned char>(currentSpeed[0]);
+            speed[1] = static_cast<unsigned char>(currentSpeed[1]);
+            speed[2] = static_cast<unsigned char>(currentSpeed[2]);
+            speedLength = 3;
+        }else {
+            exit(0);
+        }
+        if(speed_change > 0) {
+            int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_pos);
+            glRasterPos2d(-0.78, 0.6);
+            len = 1;
+            for (int i = 0; i < len; i++) {
+                glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_pos[i]);
+            }
+            int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
+            glRasterPos2d(-0.76, 0.6);
+            len = speedLength;
+            for (int i = 0; i < len; i++) {
+                glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed[i]);
+            }
+        }else{
+            exit(0);
+        }
+    }else{
+        exit(0);
+    }
+
+    glPopMatrix();
+}
+
+void displayStatus(){
+    glPopMatrix();
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE); //for lighting stuff
+    glEnable(GL_COLOR_MATERIAL);
+
+    glColor3f(1.0f,1.0f,1.0f);
+
+    // Status
+    int key_statusTitle = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_status);
+    glRasterPos2d(-0.99, 0.5);
+    int len = 15;
+    for(int i=0;i<len;i++){
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_status[i]);
+    }
+
+    if(earthTimeInterval==0){
+        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_pause);
+        glRasterPos2d(-0.74, 0.5);
+        len = 6;
+        for(int i=0;i<len;i++){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_pause[i]);
+        }
+    }else if(earthTimeInterval<0){
+        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_rev);
+        glRasterPos2d(-0.74, 0.5);
+        len = 8;
+        for(int i=0;i<len;i++){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_rev[i]);
+        }
+    }else if(abs(speed_change)!=0){
+        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_acc);
+        glRasterPos2d(-0.74, 0.5);
+        len = 11;
+        for(int i=0;i<len;i++){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_acc[i]);
+        }
+    }else {
+        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_norm);
+        glRasterPos2d(-0.74, 0.5);
+        len = 6;
+        for (int i = 0; i < len; i++) {
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string_norm[i]);
+        }
+    }
+    glPushMatrix();
 }
 /* Handler for window re-size event. Called back when the window first appears and
    whenever the window is re-sized with its new width and height */
@@ -518,13 +649,24 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative GLint
 void specialKeys(GLint key, GLint x, GLint y) {
     switch (key) {
         case GLUT_KEY_UP:    // for pressing the up key, increases earth day speed by 2x
-            earthTimeInterval += 1.0;
-            earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+            if(earthTimeInterval<0) {
+                earthTimeInterval -= 1.0;
+                earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+            }else{
+                earthTimeInterval += 1.0;
+                earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+            }
+            speed_change += 1;
             break;
         case GLUT_KEY_DOWN:    // for pressing the down key, decreases earth day speed 0.5x
             if (earthTimeInterval > 1.0) {
-            earthTimeInterval -= 1.0;
-            earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+                earthTimeInterval -= 1.0;
+                earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+                speed_change -= 1;
+            }else if(earthTimeInterval<-1.0){
+                earthTimeInterval += 1.0;
+                earthTimeIntervalTemp = earthTimeInterval; //set temp speed var to current speed
+                speed_change -= 1;
             }
             break;
     }
@@ -603,13 +745,13 @@ GLuint LoadTexture( const char * filename )
 GLint main(GLint argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);  // Enable double buffered mode
-    glutInitWindowSize(1024, 512);   // Set the window's initial width & height - non-square
+    glutInitWindowSize(1000, 500);   // Set the window's initial width & height - non-square
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Solar System");  // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paGLint event
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
     glutTimerFunc(0, Timer, 0);     // First timer call immediately
-    glViewport(0, 0, 1024, 512);
+    glViewport(0, 0, 1000, 500);
     glutSpecialFunc(specialKeys); // Register callback handler for special-key event
     glutKeyboardFunc(keyboard);     //Register callback handler for keyboard events
     initGL();                       // Our own OpenGL initialization
