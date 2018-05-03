@@ -147,6 +147,8 @@ void display() {
     glMatrixMode(GL_MODELVIEW);     // To operate on Model-View matrix
     glLoadIdentity();               // Reset the model-view matrix
 
+
+    //gluLookAt(0,10,10,0,0,0,0,1,0);
     // display functions go here
     //turnOnLights();
 
@@ -234,7 +236,7 @@ void displayEachPlanet(GLfloat inclination, GLfloat distanceFromSun, GLfloat rot
 
     glRotatef(inclination, 0.0f, 0.0f, 1.0f);
     glRotatef(GLint(360.0f * earthDaysPerYear / orbitPeriod) % 360, 0.0f, 1.0f, 0.0f);
-    glTranslatef(distanceFromSun/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
+    glTranslatef(distanceFromSun/10.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     glRotatef(360.0f * earthDays / rotationPeriod, 0.0f, 1.0f, 0.0f);
 
     //glColor3f(color1, color2, color3);
@@ -265,7 +267,7 @@ void displaySaturnRings(){
 
     glRotatef(SATURN_INCLINATION, 0.0f, 0.0f, 1.0f);
     glRotatef(360.0f * earthDaysPerYear / SATURN_ORBIT, 0.0f, 1.0f, 0.0f);
-    glTranslatef(SATURN_DISTANCE/5.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
+    glTranslatef(SATURN_DISTANCE/10.0f + 0.15f, 0.0f, 0.0f); // add offset to display sun and scale down real distance
     //glRotatef(360.0f * earthDays / SATURN_ROTATION + 90, 1.0f, 1.0f, 0.0f);
     glRotatef(360.0f/SATURN_ROTATION + 45, 0.5f, 0.0f, 0.0f);
 
