@@ -80,6 +80,7 @@ unsigned char dayCount[] = "0000000000";
 GLint speed_change = 0;
 unsigned char speed_normal[] = "None";
 unsigned char speed_pos[] = "+";
+unsigned char speed_neg[] = "-";
 char currentSpeed[10];
 unsigned char speed[] = "000000";
 
@@ -550,17 +551,34 @@ void displaySpeed(){
             exit(0);
         }
         if(speed_change > 0) {
-            int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_pos);
-            glRasterPos2d(-0.78, 0.6);
-            len = 1;
-            for (int i = 0; i < len; i++) {
-                glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_pos[i]);
-            }
-            int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
-            glRasterPos2d(-0.76, 0.6);
-            len = speedLength;
-            for (int i = 0; i < len; i++) {
-                glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed[i]);
+            if(earthTimeInterval>0) {
+                int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_pos);
+                glRasterPos2d(-0.78, 0.6);
+                len = 1;
+                for (int i = 0; i < len; i++) {
+                    glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_pos[i]);
+                }
+                int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
+                glRasterPos2d(-0.76, 0.6);
+                len = speedLength;
+                for (int i = 0; i < len; i++) {
+                    glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed[i]);
+                }
+            }else if(earthTimeInterval<0){
+                int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_neg);
+                glRasterPos2d(-0.78, 0.6);
+                len = 1;
+                for (int i = 0; i < len; i++) {
+                    glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_neg[i]);
+                }
+                int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
+                glRasterPos2d(-0.76, 0.6);
+                len = speedLength;
+                for (int i = 0; i < len; i++) {
+                    glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed[i]);
+                }
+            }else{
+                exit(0);
             }
         }else{
             exit(0);
