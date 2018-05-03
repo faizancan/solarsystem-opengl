@@ -315,7 +315,6 @@ void displayKeyFunctions(){
     glColor3f(1.0f,1.0f,1.0f);
 
     // title
-    int key_title = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_legendTitle);
     glRasterPos2d(-0.99,-0.85);
     int len = 14;
     for(int i=0;i<len;i++){
@@ -323,7 +322,6 @@ void displayKeyFunctions(){
     }
 
     // quit
-    int key_q = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_q);
     glRasterPos2d(-0.75,-0.85);
     len = 9;
     for(int i=0;i<len;i++){
@@ -331,7 +329,6 @@ void displayKeyFunctions(){
     }
 
     // pause
-    int key_p = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_p);
     glRasterPos2d(-0.6,-0.85);
     len = 9;
     for(int i=0;i<len;i++){
@@ -339,7 +336,6 @@ void displayKeyFunctions(){
     }
 
     // continue
-    int key_c = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_c);
     glRasterPos2d(-0.43,-0.85);
     len = 12;
     for(int i=0;i<len;i++){
@@ -347,7 +343,6 @@ void displayKeyFunctions(){
     }
 
     // reverse
-    int key_r = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_r);
     glRasterPos2d(-0.2,-0.85);
     len = 11;
     for(int i=0;i<len;i++){
@@ -355,7 +350,6 @@ void displayKeyFunctions(){
     }
 
     // Speed up
-    int key_UP = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_UP);
     glRasterPos2d(-0.75,-0.95);
     len = 19;
     for(int i=0;i<len;i++){
@@ -363,7 +357,6 @@ void displayKeyFunctions(){
     }
 
     // Slow down
-    int key_DOWN = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_DOWN);
     glRasterPos2d(-0.4,-0.95);
     len = 22;
     for(int i=0;i<len;i++){
@@ -460,7 +453,6 @@ void displayCounter(){
     }
 
     // Years
-    int key_years = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_years);
     glRasterPos2d(-0.99, 0.9);
     int len = 21;
     for(int i=0;i<len;i++){
@@ -468,7 +460,6 @@ void displayCounter(){
     }
 
     // Year Count
-    int key_yearNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, yrCount);
     glRasterPos2d(-0.66, 0.9);
     len = yrLength;
     for(int i=0;i<len;i++){
@@ -476,21 +467,18 @@ void displayCounter(){
     }
 
     // Total Days
-    int key_daysTotal = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysTotal);
     glRasterPos2d(-0.99, 0.8);
     len = 19;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_daysTotal[i]);
     }
     // Total Day Count
-    int key_dayTotalNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, dayCount);
     glRasterPos2d(-0.68, 0.8);
     len = dayLength;
     for(int i=0;i<len;i++){
         glutBitmapCharacter(GLUT_BITMAP_8_BY_13,dayCount[i]);
     }
     // Day per year
-    int key_current = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_daysCurrent);
     glRasterPos2d(-0.99, 0.7);
     len = 20;
     for(int i=0;i<len;i++){
@@ -498,7 +486,6 @@ void displayCounter(){
     }
 
     // Day per year
-    int key_currentNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, yrCurrent);
     glRasterPos2d(-0.66, 0.7);
     len = dayYrLength;
     for(int i=0;i<len;i++){
@@ -519,7 +506,6 @@ void displaySpeed(){
     sprintf(currentSpeed, "%i", abs(speed_change));
 
     // Speed
-    int key_speedTitle = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_speed);
     glRasterPos2d(-0.99, 0.6);
     int len = 13;
     for(int i=0;i<len;i++){
@@ -552,26 +538,22 @@ void displaySpeed(){
         }
         if(speed_change > 0) {
             if(earthTimeInterval>0) {
-                int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_pos);
                 glRasterPos2d(-0.78, 0.6);
                 len = 1;
                 for (int i = 0; i < len; i++) {
                     glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_pos[i]);
                 }
-                int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
                 glRasterPos2d(-0.76, 0.6);
                 len = speedLength;
                 for (int i = 0; i < len; i++) {
                     glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed[i]);
                 }
             }else if(earthTimeInterval<0){
-                int key_speedChange = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed_neg);
                 glRasterPos2d(-0.78, 0.6);
                 len = 1;
                 for (int i = 0; i < len; i++) {
                     glutBitmapCharacter(GLUT_BITMAP_8_BY_13, speed_neg[i]);
                 }
-                int key_speedNum = glutBitmapLength(GLUT_BITMAP_8_BY_13, speed);
                 glRasterPos2d(-0.76, 0.6);
                 len = speedLength;
                 for (int i = 0; i < len; i++) {
@@ -598,7 +580,6 @@ void displayStatus(){
     glColor3f(1.0f,1.0f,1.0f);
 
     // Status
-    int key_statusTitle = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_status);
     glRasterPos2d(-0.99, 0.5);
     int len = 15;
     for(int i=0;i<len;i++){
@@ -606,28 +587,24 @@ void displayStatus(){
     }
 
     if(earthTimeInterval==0){
-        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_pause);
         glRasterPos2d(-0.74, 0.5);
         len = 6;
         for(int i=0;i<len;i++){
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_pause[i]);
         }
     }else if(earthTimeInterval<0){
-        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_rev);
         glRasterPos2d(-0.74, 0.5);
         len = 8;
         for(int i=0;i<len;i++){
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_rev[i]);
         }
     }else if(abs(speed_change)!=0){
-        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_acc);
         glRasterPos2d(-0.74, 0.5);
         len = 11;
         for(int i=0;i<len;i++){
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13,string_acc[i]);
         }
     }else {
-        int key_status = glutBitmapLength(GLUT_BITMAP_8_BY_13, string_norm);
         glRasterPos2d(-0.74, 0.5);
         len = 6;
         for (int i = 0; i < len; i++) {
